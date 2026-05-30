@@ -1,8 +1,35 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="WOLFSE">
-  <rect width="64" height="64" rx="14" fill="#0b0e13"/>
-  <!-- soyut kurt başı + lazer -->
-  <path d="M14 18l9 6 9-7 9 7 9-6-3 17c0 12-8 19-15 21-7-2-15-9-15-21z" fill="none" stroke="#ff5a1f" stroke-width="3" stroke-linejoin="round"/>
-  <circle cx="25" cy="33" r="2.4" fill="#ff8a3d"/>
-  <circle cx="39" cy="33" r="2.4" fill="#ff8a3d"/>
-  <path d="M32 6v8" stroke="#ff5a1f" stroke-width="3" stroke-linecap="round"/>
+  <defs>
+    <radialGradient id="lazerGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff3d00" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#ff3d00" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <rect width="64" height="64" rx="12" fill="#0a0c10"/>
+  
+  <!-- Kurt başı arka şekli -->
+  <path d="M 18 24 L 22 16 L 28 18 L 32 12 L 36 18 L 42 16 L 46 24 Q 48 30 46 36 Q 44 40 32 42 Q 20 40 18 36 Q 16 30 18 24 Z" fill="#1a1f2e" stroke="#2a3042" stroke-width="1"/>
+  
+  <!-- Kulaçlar (daha keskin) -->
+  <path d="M 20 20 L 18 10 L 24 15 Z" fill="#252d3a"/>
+  <path d="M 44 20 L 46 10 L 40 15 Z" fill="#252d3a"/>
+  
+  <!-- Burun -->
+  <path d="M 30 32 L 32 34 L 34 32 Z" fill="#1a1f2e"/>
+  
+  <!-- Lazer gözleri (parlak turuncu) -->
+  <circle cx="26" cy="28" r="3.5" fill="#ff3d00" filter="url(#glow)"/>
+  <circle cx="38" cy="28" r="3.5" fill="#ff3d00" filter="url(#glow)"/>
+  
+  <!-- Lazer ışını efektleri -->
+  <line x1="26" y1="24" x2="26" y2="8" stroke="#ff5a1f" stroke-width="1.5" opacity="0.6"/>
+  <line x1="38" y1="24" x2="38" y2="8" stroke="#ff5a1f" stroke-width="1.5" opacity="0.6"/>
 </svg>

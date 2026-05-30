@@ -1,19 +1,62 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 96" role="img" aria-label="WOLFSE — Metalde Keskin Güç">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 160" role="img" aria-label="WOLFSE — Metalde Keskin Güç">
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#ff5a1f"/>
-      <stop offset="1" stop-color="#ff8a3d"/>
+    <linearGradient id="fireGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ff3d00"/>
+      <stop offset="100%" stop-color="#ff9100"/>
     </linearGradient>
+    <radialGradient id="lazerGlow">
+      <stop offset="0%" stop-color="#ff5a1f" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#ff3d00" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
   </defs>
-  <rect width="360" height="96" fill="none"/>
-  <!-- mark -->
-  <g transform="translate(8,12)">
-    <path d="M6 14l10 7 10-8 10 8 10-7-3 19c0 13-9 21-17 23-8-2-17-10-17-23z" fill="none" stroke="url(#g)" stroke-width="4" stroke-linejoin="round"/>
-    <circle cx="20" cy="32" r="2.6" fill="#ff8a3d"/>
-    <circle cx="36" cy="32" r="2.6" fill="#ff8a3d"/>
-    <path d="M28 0v9" stroke="#ff5a1f" stroke-width="4" stroke-linecap="round"/>
+  
+  <!-- Kurt başı mark -->
+  <g transform="translate(20, 20)">
+    <!-- Kurt başı arka şekli -->
+    <path d="M 24 38 L 30 22 L 38 24 L 44 14 L 52 24 L 60 22 L 66 38 Q 70 48 66 60 Q 62 68 44 72 Q 26 68 22 60 Q 18 48 24 38 Z" fill="#1a2332" stroke="#2a3854" stroke-width="1.5"/>
+    
+    <!-- Kulaçlar (keskin, ateşli) -->
+    <path d="M 28 28 L 24 8 L 34 22 Z" fill="#2a3854"/>
+    <path d="M 60 28 L 64 8 L 54 22 Z" fill="#2a3854"/>
+    
+    <!-- Kulaç tepeleri (altın) -->
+    <path d="M 28 28 L 26 12 L 30 24 Z" fill="#ff9100" opacity="0.7"/>
+    <path d="M 60 28 L 62 12 L 58 24 Z" fill="#ff9100" opacity="0.7"/>
+    
+    <!-- Burun -->
+    <path d="M 40 52 L 44 58 L 48 52 Z" fill="#151a24"/>
+    
+    <!-- Lazer gözleri (parlak turuncu, ışıyıp duran) -->
+    <circle cx="34" cy="42" r="6.5" fill="#ff3d00" filter="url(#glow)"/>
+    <circle cx="54" cy="42" r="6.5" fill="#ff3d00" filter="url(#glow)"/>
+    
+    <!-- Göz iç parıltı -->
+    <circle cx="34" cy="40" r="2.5" fill="#ffcc00" opacity="0.8"/>
+    <circle cx="54" cy="40" r="2.5" fill="#ffcc00" opacity="0.8"/>
+    
+    <!-- Lazer ışını efektleri (yukarıya doğru) -->
+    <line x1="34" y1="36" x2="34" y2="0" stroke="#ff5a1f" stroke-width="3" opacity="0.6"/>
+    <line x1="54" y1="36" x2="54" y2="0" stroke="#ff5a1f" stroke-width="3" opacity="0.6"/>
+    
+    <!-- Ateş-ışık efekti (gözlerin etrafı) -->
+    <circle cx="34" cy="42" r="10" fill="url(#lazerGlow)"/>
+    <circle cx="54" cy="42" r="10" fill="url(#lazerGlow)"/>
   </g>
-  <!-- wordmark -->
-  <text x="92" y="50" font-family="Segoe UI, Arial, sans-serif" font-size="40" font-weight="800" letter-spacing="2" fill="#ffffff">WOLF<tspan fill="#ff5a1f">SE</tspan></text>
-  <text x="94" y="74" font-family="Segoe UI, Arial, sans-serif" font-size="12.5" letter-spacing="3" fill="#aeb9c7">METALDE KESKİN GÜÇ</text>
+  
+  <!-- WOLFSE Yazısı -->
+  <text x="110" y="90" font-family="Arial, Helvetica, sans-serif" font-size="72" font-weight="900" letter-spacing="3" fill="#ffffff">WOLF<tspan fill="#ff3d00">SE</tspan></text>
+  
+  <!-- LAZER KESİM yazısı -->
+  <text x="110" y="125" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" letter-spacing="4" fill="#ff5a1f">LAZER KESİM</text>
+  
+  <!-- Dekoratif çizgiler (şerit efekti) -->
+  <line x1="110" y1="135" x2="380" y2="135" stroke="#ff3d00" stroke-width="2" opacity="0.6"/>
+  <line x1="110" y1="140" x2="320" y2="140" stroke="#ff5a1f" stroke-width="1" opacity="0.4"/>
 </svg>

@@ -23,8 +23,8 @@ export const site = {
     phoneDisplay: "0 (535) 699 72 73",
     phoneHref: "+905356997273",
     whatsappNumber: "905356997273",
-    email: "info@wolfse.net", // TODO: gerçek e-posta doğrulanacak
-    salesEmail: "teklif@wolfse.net", // TODO: gerçek e-posta doğrulanacak
+    email: "erol@wolfse.net", // TODO: gerçek e-posta doğrulanacak
+    salesEmail: "erol@wolfse.net", // TODO: gerçek e-posta doğrulanacak
     addressLine: "TODO: açık adres girilecek",
     district: "TODO: ilçe",
     city: "TODO: il",

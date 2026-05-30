@@ -1,0 +1,79 @@
+name: Deploy to SiteGround
+
+# main'e her push'ta veya elle tetiklendiğinde siteyi derleyip
+# SiteGround hesabına SSH/rsync ile yükler.
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "README.md"
+      - "DEPLOY.md"
+      - ".gitignore"
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Build static site (dist/)
+        run: |
+          npm install --no-audit --no-fund
+          npm run build:html
+
+      - name: Check deploy configuration
+        id: cfg
+        run: |
+          if [ -z "${{ secrets.SITEGROUND_SSH_HOST }}" ]; then
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            echo "::warning title=Deploy atlandı::SiteGround sırları (secrets) tanımlı değil. Repo Settings → Secrets and variables → Actions altına SITEGROUND_* ekleyin. Ayrıntı: DEPLOY.md"
+          else
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Setup SSH key
+        if: steps.cfg.outputs.configured == 'true'
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "${{ secrets.SITEGROUND_SSH_KEY }}" > ~/.ssh/id_deploy
+          chmod 600 ~/.ssh/id_deploy
+          PORT="${{ secrets.SITEGROUND_SSH_PORT }}"
+          PORT="${PORT:-18765}"
+          ssh-keyscan -p "$PORT" -H "${{ secrets.SITEGROUND_SSH_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null || true
+
+      - name: Deploy dist/ via rsync
+        if: steps.cfg.outputs.configured == 'true'
+        env:
+          SG_HOST: ${{ secrets.SITEGROUND_SSH_HOST }}
+          SG_USER: ${{ secrets.SITEGROUND_SSH_USER }}
+          SG_PORT: ${{ secrets.SITEGROUND_SSH_PORT }}
+          SG_DEST: ${{ secrets.SITEGROUND_DEPLOY_PATH }}
+        run: |
+          set -euo pipefail
+          PORT="${SG_PORT:-18765}"
+          DEST="${SG_DEST:?SITEGROUND_DEPLOY_PATH secret gerekli}"
+          echo "Deploying dist/ -> ${SG_USER}@${SG_HOST}:${DEST} (port ${PORT})"
+          rsync -avz --delete \
+            --exclude '.well-known/' \
+            -e "ssh -i ~/.ssh/id_deploy -p ${PORT} -o StrictHostKeyChecking=accept-new" \
+            dist/ "${SG_USER}@${SG_HOST}:${DEST}"
+
+      - name: Summary
+        if: always()
+        run: |
+          if [ "${{ steps.cfg.outputs.configured }}" = "true" ]; then
+            echo "✅ Deploy adımı çalıştı (SiteGround sırları tanımlı)." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "⏭️ Deploy atlandı — SiteGround sırları henüz tanımlı değil. DEPLOY.md'ye bakın." >> "$GITHUB_STEP_SUMMARY"
+          fi

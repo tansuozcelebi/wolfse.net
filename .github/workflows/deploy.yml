@@ -48,6 +48,12 @@ jobs:
           mkdir -p ~/.ssh
           printf '%s\n' "${{ secrets.SITEGROUND_SSH_KEY }}" > ~/.ssh/id_deploy
           chmod 600 ~/.ssh/id_deploy
+          # Anahtar passphrase'li ise (ör. SiteGround'da üretilen) runner içinde passphrase'i kaldır
+          if [ -n "${{ secrets.SITEGROUND_SSH_PASSPHRASE }}" ]; then
+            ssh-keygen -p -f ~/.ssh/id_deploy -P "${{ secrets.SITEGROUND_SSH_PASSPHRASE }}" -N "" >/dev/null \
+              && echo "Passphrase kaldırıldı (yalnızca runner içinde)." \
+              || { echo "::error title=Passphrase hatalı::SITEGROUND_SSH_PASSPHRASE anahtarla eşleşmiyor."; exit 1; }
+          fi
           PORT="${{ secrets.SITEGROUND_SSH_PORT }}"
           PORT="${PORT:-18765}"
           ssh-keyscan -p "$PORT" -H "${{ secrets.SITEGROUND_SSH_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null || true

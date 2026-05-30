@@ -58,8 +58,7 @@ function headerHtml(currentPath) {
   return `<header class="site-header" id="top">
   <div class="container header-inner">
     <a class="brand" href="/" aria-label="${site.brand} anasayfa">
-      ${icon("wolf", "brand-mark")}
-      <span class="brand-text">WOLF<span class="brand-accent">SE</span></span>
+      <img class="brand-img" src="/assets/logo/wolfse-brand.png" alt="${site.brand} — Lazer Kesim" width="200" height="200" fetchpriority="high">
     </a>
     <button class="nav-toggle" aria-label="Menüyü aç/kapat" aria-expanded="false" aria-controls="primary-nav">
       ${icon("menu", "icon nav-open-ic")}${icon("close", "icon nav-close-ic")}
@@ -90,7 +89,7 @@ function footerHtml() {
   return `<footer class="site-footer">
   <div class="container footer-grid">
     <div class="footer-col footer-brand">
-      <a class="brand" href="/">${icon("wolf", "brand-mark")}<span class="brand-text">WOLF<span class="brand-accent">SE</span></span></a>
+      <a class="brand" href="/"><img class="brand-img" src="/assets/logo/wolfse-brand.png" alt="${site.brand} — Lazer Kesim" width="160" height="160" loading="lazy"></a>
       <p>${esc(site.description)}</p>
       <p class="footer-slogan">“${esc(site.slogan)}”</p>
       ${social ? `<div class="social">${social}</div>` : ""}
@@ -109,7 +108,6 @@ function footerHtml() {
         <li>${icon("phone")}<a href="tel:${site.contact.phoneHref}">${esc(site.contact.phoneDisplay)}</a></li>
         <li>${icon("mail")}<a href="mailto:${site.contact.email}">${esc(site.contact.email)}</a></li>
         <li>${icon("whatsapp")}<a href="${whatsappLink()}" rel="noopener">WhatsApp ile Proje Gönder</a></li>
-        <li>${icon("pin")}<span>${esc(site.contact.city)}, ${esc(site.contact.country)}</span></li>
       </ul>
       <a class="btn btn-primary btn-sm" href="/teklif-al">Hızlı Teklif Al</a>
     </div>

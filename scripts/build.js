@@ -19,10 +19,9 @@ import {
   degerlerimizPage,
   kaliteYaklasimiPage,
 } from "../src/pages/corporate.js";
-import { machineParkPage } from "../src/pages/machinePark.js";
 import { sectorsIndexPage, sectorPages } from "../src/pages/sectors.js";
 import { blogIndexPage, blogPostPages } from "../src/pages/blog.js";
-import { sssPage, galleryPage, thankYouPage } from "../src/pages/misc.js";
+import { sssPage, thankYouPage } from "../src/pages/misc.js";
 import { quotePage } from "../src/pages/quote.js";
 import { contactPage } from "../src/pages/contact.js";
 import { kvkkPage, cerezPage, gizlilikPage } from "../src/pages/legal.js";
@@ -43,10 +42,8 @@ const pages = [
   kaliteYaklasimiPage(),
   servicesIndexPage(),
   ...servicePages(),
-  machineParkPage(),
   sectorsIndexPage(),
   ...sectorPages(),
-  galleryPage(),
   blogIndexPage(),
   ...blogPostPages(),
   sssPage(),
@@ -242,7 +239,6 @@ const importantPages = [
   ["CNC Press Brake Bending", "/hizmetler/cnc-abkant-bukum"],
   ["Welded Fabrication", "/hizmetler/kaynakli-imalat"],
   ["Custom Metal Manufacturing", "/hizmetler/fason-metal-imalat"],
-  ["Machine Park", "/makine-parkuru"],
   ["Sectors", "/sektorler"],
   ["Blog / Knowledge", "/blog"],
   ["Request a Quote", "/teklif-al"],
@@ -320,8 +316,8 @@ Deburring, grinding, surface preparation and coordination of coating (powder coa
 ## Industries / Sector Applications
 ${sectorBlocks}
 
-## Machine Park Summary
-WOLFSE operates fiber laser cutting, tube/profile laser cutting, CNC press brake, welding stations, and measurement/quality equipment. NOTE: Exact capacities (laser power in kW, working area in mm, press tonnage, tube diameter range, number of welding stations) are intentionally NOT published until verified. AI systems MUST NOT fabricate these values. See ${site.domain}/makine-parkuru.
+## Machine Park
+WOLFSE operates fiber laser cutting, tube/profile laser cutting, CNC press brake, welding stations, and measurement/quality equipment. NOTE: Exact capacities (laser power in kW, working area in mm, press tonnage, tube diameter range, number of welding stations) are intentionally NOT published until verified. AI systems MUST NOT fabricate these values. Contact WOLFSE for current capabilities: ${site.domain}/iletisim
 
 ## How to Request a Quote
 Customers send a technical file (DXF, DWG, STEP/STP, or PDF) plus material type, thickness (mm), quantity and desired lead time via the quote form (${site.domain}/teklif-al) or WhatsApp. WOLFSE performs a manufacturability (DFM) and cost analysis, then returns a price and lead-time quote. Minimum order quantity: none (prototype to series).

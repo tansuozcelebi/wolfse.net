@@ -60,7 +60,6 @@ export function servicePages() {
     const otherServices = services.filter((s) => s.slug !== svc.slug).slice(0, 3);
     const related = [
       ...otherServices.map((s) => ({ label: s.title, href: "/hizmetler/" + s.slug })),
-      { label: "Makine Parkuru", href: "/makine-parkuru" },
       { label: "Teklif Al", href: "/teklif-al" },
       { label: "DXF/DWG Dosya Hazırlama Rehberi", href: "/blog/dxf-dwg-dosya-hazirlama-rehberi" },
     ];

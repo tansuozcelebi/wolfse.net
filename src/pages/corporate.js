@@ -2,7 +2,7 @@ import { site, services } from "../data/site.js";
 import { icon } from "../lib/icons.js";
 import { breadcrumbHtml } from "../lib/layout.js";
 import { breadcrumbSchema } from "../lib/schema.js";
-import { btn, sectionHeader, advantageCard, checkList, ctaBand, pageSummary } from "../lib/components.js";
+import { btn, sectionHeader, advantageCard, checkList, ctaBand } from "../lib/components.js";
 
 function corpCrumbs(name, href) {
   return [
@@ -68,8 +68,6 @@ export function hakkimizdaPage() {
       <div class="callout">
         <p><strong>Not:</strong> Kuruluş yılı, üretim alanı, ekip büyüklüğü ve referans bilgileri gerçek verilerle güncellenecektir. <span class="todo">TODO: kurumsal künye bilgileri girilecek.</span></p>
       </div>
-
-      ${pageSummary("Bu sayfa WOLFSE'nin kim olduğunu, sunduğu metal işleme hizmetlerini ve şeffaf, hızlı, hassas üretim yaklaşımını açıklar.")}
     </div>
   </section>
   ${ctaBand("Projenizi Konuşalım")}
@@ -102,7 +100,6 @@ export function vizyonMisyonPage() {
           <p>Teknik resme birebir uygun, tekrarlanabilir kalitede üretimi; şeffaf maliyet ve net terminle birleştirerek müşterilerimize ölçülebilir değer sunmak.</p>
         </article>
       </div>
-      ${pageSummary("Bu sayfa WOLFSE'nin vizyon ve misyonunu; teknoloji, hız, güven ve ölçülebilir değer odaklı hedeflerini açıklar.")}
     </div>
   </section>
   ${ctaBand("WOLFSE ile Üretin")}
@@ -134,7 +131,6 @@ export function degerlerimizPage() {
       <div class="grid grid-3">
         ${values.map(advantageCard).join("\n        ")}
       </div>
-      ${pageSummary("Bu sayfa WOLFSE'nin değerlerini (hassasiyet, hız, güven, çeviklik, tutarlılık, sorumluluk) açıklar.")}
     </div>
   </section>
   ${ctaBand("Değerlerimizi Üretimde Görün")}
@@ -173,8 +169,6 @@ export function kaliteYaklasimiPage() {
       <div class="callout">
         <p><strong>Belgelendirme:</strong> Sahip olunan kalite/yönetim sistem belgeleri (varsa) burada listelenecektir. <span class="todo">TODO: kalite belgeleri (ISO vb.) doğrulanıp eklenecek — uydurma beyan yapılmaz.</span></p>
       </div>
-
-      ${pageSummary("Bu sayfa WOLFSE'nin süreç bazlı kalite yaklaşımını; üretilebilirlik analizi, ölçüsel kontrol, tekrarlanabilirlik ve şeffaf izlenebilirlik prensiplerini açıklar.")}
     </div>
   </section>
   ${ctaBand("Kaliteli Üretim İçin Teklif Alın")}

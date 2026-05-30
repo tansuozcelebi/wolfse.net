@@ -42,7 +42,6 @@ export function sectorPages() {
     const relatedServices = services.filter((s) => s.sectors.includes(sec.slug));
     const related = [
       ...relatedServices.slice(0, 4).map((s) => ({ label: s.title, href: "/hizmetler/" + s.slug })),
-      { label: "Makine Parkuru", href: "/makine-parkuru" },
       { label: "Teklif Al", href: "/teklif-al" },
     ];
 

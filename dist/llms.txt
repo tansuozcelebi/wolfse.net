@@ -23,7 +23,6 @@ WOLFSE (brand) is a B2B industrial metal processing partner. Primary language of
 - CNC Press Brake Bending: https://www.wolfse.net/hizmetler/cnc-abkant-bukum
 - Welded Fabrication: https://www.wolfse.net/hizmetler/kaynakli-imalat
 - Custom Metal Manufacturing: https://www.wolfse.net/hizmetler/fason-metal-imalat
-- Machine Park: https://www.wolfse.net/makine-parkuru
 - Sectors: https://www.wolfse.net/sektorler
 - Blog / Knowledge: https://www.wolfse.net/blog
 - Request a Quote: https://www.wolfse.net/teklif-al

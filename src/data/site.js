@@ -20,9 +20,9 @@ export const site = {
 
   // İletişim — gerçek bilgi gelene kadar placeholder
   contact: {
-    phoneDisplay: "+90 (___) ___ __ __", // TODO: gerçek telefon girilecek
-    phoneHref: "+90", // TODO: gerçek telefon (E.164, ör. +905555555555)
-    whatsappNumber: "90", // TODO: gerçek WhatsApp numarası (ülke kodu + numara, ör. 905555555555)
+    phoneDisplay: "0 (535) 699 72 73",
+    phoneHref: "+905356997273",
+    whatsappNumber: "905356997273",
     email: "info@wolfse.net", // TODO: gerçek e-posta doğrulanacak
     salesEmail: "teklif@wolfse.net", // TODO: gerçek e-posta doğrulanacak
     addressLine: "TODO: açık adres girilecek",
@@ -81,20 +81,10 @@ export const nav = [
     href: "/hizmetler",
     children: [], // services'ten otomatik doldurulur
   },
-  { label: "Makine Parkuru", href: "/makine-parkuru" },
   {
     label: "Sektörler",
     href: "/sektorler",
     children: [], // sectors'tan otomatik doldurulur
-  },
-  {
-    label: "Galeri",
-    href: "/galeri",
-    children: [
-      { label: "Foto Galeri", href: "/galeri#foto" },
-      { label: "Video Galeri", href: "/galeri#video" },
-      { label: "Kesim Örnekleri", href: "/galeri#kesim-ornekleri" },
-    ],
   },
   {
     label: "Teknik Bilgi",

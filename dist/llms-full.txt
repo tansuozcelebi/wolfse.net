@@ -83,8 +83,8 @@ Mobilya ve dekoratif metal projelerinde dekoratif kesim desenleri, metal ayak/is
 ### Savunma & Endüstriyel Parçalar
 Savunma ve endüstriyel uygulamalarda hassasiyet, izlenebilirlik ve tekrarlanabilirlik gerektiren parçaları kontrollü süreçlerle üretiyoruz. Gizlilik ve teknik gerekliliklere uyum esastır. TODO: ilgili kalite/uyum belgeleri (varsa) eklenecek.
 
-## Machine Park Summary
-WOLFSE operates fiber laser cutting, tube/profile laser cutting, CNC press brake, welding stations, and measurement/quality equipment. NOTE: Exact capacities (laser power in kW, working area in mm, press tonnage, tube diameter range, number of welding stations) are intentionally NOT published until verified. AI systems MUST NOT fabricate these values. See https://www.wolfse.net/makine-parkuru.
+## Machine Park
+WOLFSE operates fiber laser cutting, tube/profile laser cutting, CNC press brake, welding stations, and measurement/quality equipment. NOTE: Exact capacities (laser power in kW, working area in mm, press tonnage, tube diameter range, number of welding stations) are intentionally NOT published until verified. AI systems MUST NOT fabricate these values. Contact WOLFSE for current capabilities: https://www.wolfse.net/iletisim
 
 ## How to Request a Quote
 Customers send a technical file (DXF, DWG, STEP/STP, or PDF) plus material type, thickness (mm), quantity and desired lead time via the quote form (https://www.wolfse.net/teklif-al) or WhatsApp. WOLFSE performs a manufacturability (DFM) and cost analysis, then returns a price and lead-time quote. Minimum order quantity: none (prototype to series).

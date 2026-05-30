@@ -63,10 +63,18 @@ jobs:
           set -euo pipefail
           PORT="${SG_PORT:-18765}"
           DEST="${SG_DEST:?SITEGROUND_DEPLOY_PATH secret gerekli}"
+          SSH="ssh -i ~/.ssh/id_deploy -p ${PORT} -o StrictHostKeyChecking=accept-new"
+          echo "Hedef dizin doğrulanıyor: ${SG_USER}@${SG_HOST}:${DEST}"
+          # Güvenlik: hedef dizin yoksa dur (yanlış yola --delete ile yazmayı önler)
+          if ! $SSH "${SG_USER}@${SG_HOST}" "test -d \"${DEST}\""; then
+            echo "::error title=Hatalı deploy yolu::'${DEST}' uzak sunucuda yok. SITEGROUND_DEPLOY_PATH'i kontrol edin (SSH ile 'realpath ~/www/<domain>/public_html')."
+            exit 1
+          fi
           echo "Deploying dist/ -> ${SG_USER}@${SG_HOST}:${DEST} (port ${PORT})"
           rsync -avz --delete \
             --exclude '.well-known/' \
-            -e "ssh -i ~/.ssh/id_deploy -p ${PORT} -o StrictHostKeyChecking=accept-new" \
+            --exclude '_old/' \
+            -e "$SSH" \
             dist/ "${SG_USER}@${SG_HOST}:${DEST}"
 
       - name: Summary

@@ -32,6 +32,7 @@ fi
 echo "▶ Yükleniyor: dist/ → ${SG_USER}@${SG_HOST}:${SG_DEST} (port ${SG_PORT})"
 rsync -avz --delete \
   --exclude '.well-known/' \
+  --exclude '_old/' \
   -e "ssh ${SSH_OPTS}" \
   dist/ "${SG_USER}@${SG_HOST}:${SG_DEST}"
 

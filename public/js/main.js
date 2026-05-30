@@ -156,6 +156,57 @@
       var btn = form.querySelector('button[type="submit"]');
       if (btn) { btn.disabled = true; }
       var note2 = document.getElementById("form-success");
+    });
+  }
+
+  /* ---- Video Modal ---- */
+  function initVideoModal() {
+    var modal = document.getElementById("video-modal");
+    var video = document.getElementById("intro-video");
+    var closeBtn = document.querySelector(".video-close-btn");
+    
+    if (!modal || !video || !closeBtn) return;
+    
+    // Sayfa yüklendiğinde modal'ı göster
+    function showModal() {
+      modal.classList.add("active");
+      video.play();
+    }
+    
+    // Video bittiğinde close butonu göster
+    video.addEventListener("ended", function() {
+      closeBtn.classList.add("show");
+    });
+    
+    // Close butonu tıklaması
+    closeBtn.addEventListener("click", function() {
+      modal.classList.remove("active");
+      closeBtn.classList.remove("show");
+      video.pause();
+      video.currentTime = 0;
+    });
+    
+    // Modal'ın dışına tıklanırsa kapat
+    modal.addEventListener("click", function(e) {
+      if (e.target === modal) {
+        modal.classList.remove("active");
+        closeBtn.classList.remove("show");
+        video.pause();
+        video.currentTime = 0;
+      }
+    });
+    
+    // Sayfa yüklendikten sonra göster (gecikme ile)
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", showModal);
+    } else {
+      showModal();
+    }
+  }
+  
+  initVideoModal();
+
+})();
       if (note2) { note2.hidden = false; note2.textContent = "Talebiniz gönderiliyor…"; }
 
       fetch(endpoint, { method: "POST", body: new FormData(form), headers: { Accept: "application/json" } })

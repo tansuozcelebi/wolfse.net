@@ -16,7 +16,7 @@ export function sssPage() {
     <div class="container narrow">
       ${sectionHeader("Yardım", "Sık Sorulan Sorular", "Teklif, dosya, malzeme ve süreçler hakkında merak edilenler.", { as: "h1" })}
       ${faqAccordion(generalFaqs, "general")}
-      ${pageSummary("Bu sayfa WOLFSE hizmetleri, teklif alma, kabul edilen dosya formatları, malzemeler ve üretim süreçleri hakkında sık sorulan soruları yanıtlar.")}
+
     </div>
   </section>
   ${ctaBand("Sorunuz Yanıtlanmadı mı? Bize Yazın", "İletişim sayfasından veya WhatsApp'tan bize ulaşın.")}

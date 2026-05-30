@@ -65,7 +65,6 @@ export const site = {
 // Ana navigasyon
 // ---------------------------------------------------------------------------
 export const nav = [
-  { label: "Anasayfa", href: "/" },
   {
     label: "Kurumsal",
     href: "/kurumsal",
@@ -97,8 +96,13 @@ export const nav = [
       { label: "DXF/DWG Dosya Hazırlama", href: "/blog/dxf-dwg-dosya-hazirlama-rehberi" },
     ],
   },
-  { label: "Teklif Al", href: "/teklif-al", cta: true },
-  { label: "İletişim", href: "/iletisim" },
+  {
+    label: "İletişim",
+    href: "/iletisim",
+    children: [
+      { label: "Teklif Al", href: "/teklif-al" },
+    ],
+  },
 ];
 
 // ---------------------------------------------------------------------------

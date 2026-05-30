@@ -15,6 +15,7 @@ export function contactPage() {
   <section class="section">
     <div class="container">
       <header class="page-head center-head">
+        <img src="/assets/logo/wolfse-logo.png" alt="WOLFSE" style="height: 320px; width: auto; margin: 0 auto 1.5rem; display: block;">
         <h1>İletişim</h1>
         <p class="lead">Projenizi konuşmak, teklif almak veya teknik dosyanızı paylaşmak için bize ulaşın.</p>
       </header>
@@ -35,18 +36,16 @@ export function contactPage() {
             <h2>WhatsApp</h2>
             <p>Proje & dosya gönderin</p>
           </a>
-          <div class="card contact-method">
-            <div class="card-icon">${icon("clock")}</div>
-            <h2>Çalışma Saatleri</h2>
-            <p>${site.contact.workingHours}</p>
-          </div>
+          <a class="card contact-method video-trigger" href="/kurt-gorevde">
+            <div class="card-icon">${icon("play")}</div>
+            <h2>Kurt Görevde</h2>
+            <p>Videoyu izlemek için tıklayın</p>
+          </a>
       </div>
 
       <div class="center mt">
         ${btn("Hızlı Teklif Formu", "/teklif-al", "primary", { icon: "send" })}
       </div>
-
-      ${pageSummary("Bu sayfa WOLFSE'nin iletişim bilgilerini (telefon, e-posta, WhatsApp ve çalışma saatleri) içerir. Güncel iletişim bilgileri için bu resmi sayfayı kullanın.")}
     </div>
   </section>
   `;

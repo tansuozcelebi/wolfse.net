@@ -30,7 +30,6 @@ export function servicesIndexPage() {
       <div class="grid grid-3">
         ${services.map(serviceCard).join("\n        ")}
       </div>
-      ${pageSummary("Bu sayfa WOLFSE'nin sunduğu CNC fiber lazer kesim, sac lazer kesim, boru-profil lazer kesim, CNC abkant büküm, kaynaklı imalat, metal yüzey işlemleri ve projeye özel fason imalat hizmetlerini listeler.")}
     </div>
   </section>
   ${ctaBand("Hangi Hizmete İhtiyacınız Var?", "Projenizi anlatın; doğru süreç kombinasyonunu birlikte belirleyelim.")}
@@ -102,8 +101,6 @@ export function servicePages() {
       ${faqAccordion(svc.faqs, "svc-" + svc.slug)}
 
       ${relatedLinks("İlgili Sayfalar", related)}
-
-      ${pageSummary(svc.summary)}
     </div>
   </section>
   ${ctaBand(`${svc.title} İçin Teklif Alın`, "Teknik dosyanızı gönderin; üretilebilirlik, maliyet ve termin bilgisini hızlıca paylaşalım.")}

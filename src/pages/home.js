@@ -43,10 +43,12 @@ export function homePage() {
 
   const body = `
   <section class="hero">
+    <video class="hero-video" autoplay muted loop playsinline>
+      <source src="/assets/video/wolfse-anim.mp4" type="video/mp4">
+    </video>
     <div class="hero-bg" aria-hidden="true"><span class="laser-beam"></span><span class="grid-overlay"></span></div>
     <div class="container hero-inner">
-      <p class="hero-eyebrow">${icon("wolf")} ${site.brand} · ${site.slogan}</p>
-      <h1>Metalde Keskin Güç: CNC Lazer Kesim ve Fason Metal İşleme Çözümleri</h1>
+      <h1>Çeliğe keskin bir diş: CNC Lazer Kesim ve Fason Metal İşleme Çözümleri</h1>
       <p class="hero-lead">${site.brand}; sac lazer kesim, boru-profil lazer kesim, abkant büküm ve kaynaklı imalat süreçlerinde hızlı teklif, hassas üretim ve güvenilir teslimat sunan modern metal işleme partnerinizdir.</p>
       <div class="hero-cta">
         ${btn("Hızlı Teklif Al", "/teklif-al", "primary", { icon: "send" })}

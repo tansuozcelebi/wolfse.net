@@ -22,7 +22,7 @@ function legalShell({ path, name, h1, lead, sections, title, description }) {
       </div>
       ${content}
       <p class="muted">Son güncelleme: ${site.buildDate}</p>
-      ${pageSummary(`Bu sayfa ${site.brand} ${name.toLowerCase()} metnini içerir.`)}
+
     </div>
   </section>
   `;

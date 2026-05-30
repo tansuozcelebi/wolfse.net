@@ -50,7 +50,7 @@ export function homePage() {
       <p class="hero-lead">${site.brand}; sac lazer kesim, boru-profil lazer kesim, abkant büküm ve kaynaklı imalat süreçlerinde hızlı teklif, hassas üretim ve güvenilir teslimat sunan modern metal işleme partnerinizdir.</p>
       <div class="hero-cta">
         ${btn("Hızlı Teklif Al", "/teklif-al", "primary", { icon: "send" })}
-        ${btn("Makine Parkurunu İncele", "/makine-parkuru", "ghost", { icon: "gear" })}
+        ${btn("Hizmetleri İncele", "/hizmetler", "ghost", { icon: "gear" })}
         ${btn("WhatsApp ile Proje Gönder", whatsappLink(), "wa", { icon: "whatsapp" })}
       </div>
       ${trustBar(heroTrust)}
@@ -77,19 +77,6 @@ export function homePage() {
 
   <section class="section">
     <div class="container">
-      ${sectionHeader("Makine Parkuru", "Üretim Gücümüz", "Fiber lazer, boru-profil lazer, CNC abkant ve kaynak istasyonlarıyla esnek üretim.")}
-      <div class="grid grid-4 mini-machines">
-        <div class="card stat-card"><div class="card-icon">${icon("laser")}</div><h3>Fiber Lazer Kesim</h3><p class="todo">TODO: kW bilgisi</p></div>
-        <div class="card stat-card"><div class="card-icon">${icon("tube")}</div><h3>Boru-Profil Lazer</h3><p class="todo">TODO: çap/aralık</p></div>
-        <div class="card stat-card"><div class="card-icon">${icon("bend")}</div><h3>CNC Abkant Pres</h3><p class="todo">TODO: tonaj/uzunluk</p></div>
-        <div class="card stat-card"><div class="card-icon">${icon("weld")}</div><h3>Kaynak İstasyonları</h3><p class="todo">TODO: adet</p></div>
-      </div>
-      <div class="center mt">${btn("Tüm Makine Parkurunu Görün", "/makine-parkuru", "ghost", { icon: "arrow" })}</div>
-    </div>
-  </section>
-
-  <section class="section section-alt">
-    <div class="container">
       ${sectionHeader("Sektörler", "Sektörlere Göre Çözümler", "Farklı sektörlerin teknik beklentilerine uygun, esnek metal işleme.")}
       <div class="grid grid-3">
         ${sectors.map(sectorCard).join("\n        ")}
@@ -97,7 +84,7 @@ export function homePage() {
     </div>
   </section>
 
-  <section class="section">
+  <section class="section section-alt">
     <div class="container">
       ${sectionHeader("Nasıl Çalışırız?", "4 Adımda Teklif Alma Süreci", "Dosyadan teslimat planına; şeffaf ve hızlı.")}
       ${processSteps(steps)}
@@ -105,7 +92,7 @@ export function homePage() {
     </div>
   </section>
 
-  <section class="section section-alt">
+  <section class="section">
     <div class="container">
       ${sectionHeader("Teknik Bilgi Merkezi", "Blog & Rehberler", "Lazer kesim, büküm ve dosya hazırlama hakkında pratik bilgiler.")}
       <div class="grid grid-3">

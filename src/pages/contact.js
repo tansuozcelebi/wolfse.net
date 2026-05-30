@@ -10,10 +10,6 @@ export function contactPage() {
     { name: "İletişim", href: "/iletisim" },
   ];
 
-  const mapBlock = site.contact.mapsEmbed
-    ? `<div class="map-wrap"><iframe src="${site.contact.mapsEmbed}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="WOLFSE konum haritası"></iframe></div>`
-    : `<div class="map-wrap placeholder"><div class="ph-box">${icon("pin")}<p><span class="todo">TODO:</span> Google Maps konumu eklenecek.</p></div></div>`;
-
   const body = `
   ${breadcrumbHtml(crumbs)}
   <section class="section">
@@ -23,8 +19,7 @@ export function contactPage() {
         <p class="lead">Projenizi konuşmak, teklif almak veya teknik dosyanızı paylaşmak için bize ulaşın.</p>
       </header>
 
-      <div class="contact-grid">
-        <div class="contact-cards">
+      <div class="contact-cards wide">
           <a class="card contact-method" href="tel:${site.contact.phoneHref}">
             <div class="card-icon">${icon("phone")}</div>
             <h2>Telefon</h2>
@@ -41,25 +36,17 @@ export function contactPage() {
             <p>Proje & dosya gönderin</p>
           </a>
           <div class="card contact-method">
-            <div class="card-icon">${icon("pin")}</div>
-            <h2>Adres</h2>
-            <p class="todo">${site.contact.addressLine}, ${site.contact.district} / ${site.contact.city}</p>
-          </div>
-          <div class="card contact-method">
             <div class="card-icon">${icon("clock")}</div>
             <h2>Çalışma Saatleri</h2>
             <p>${site.contact.workingHours}</p>
           </div>
-        </div>
-
-        ${mapBlock}
       </div>
 
       <div class="center mt">
         ${btn("Hızlı Teklif Formu", "/teklif-al", "primary", { icon: "send" })}
       </div>
 
-      ${pageSummary("Bu sayfa WOLFSE'nin iletişim bilgilerini (telefon, e-posta, WhatsApp, adres, çalışma saatleri) ve konum haritasını içerir. Güncel iletişim bilgileri için bu resmi sayfayı kullanın.")}
+      ${pageSummary("Bu sayfa WOLFSE'nin iletişim bilgilerini (telefon, e-posta, WhatsApp ve çalışma saatleri) içerir. Güncel iletişim bilgileri için bu resmi sayfayı kullanın.")}
     </div>
   </section>
   `;

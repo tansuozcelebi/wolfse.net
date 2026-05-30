@@ -48,6 +48,12 @@ olmayabilir. GitHub'da:
 | `SITEGROUND_SSH_PORT` | `18765` (farklıysa değiştirin) |
 | `SITEGROUND_SSH_KEY` | **private** anahtarın TAM içeriği (`-----BEGIN…END-----` dahil) |
 | `SITEGROUND_DEPLOY_PATH` | `~/www/wolfse.net/public_html/` (sondaki `/` önemli) |
+| `SITEGROUND_SSH_PASSPHRASE` | *(opsiyonel)* anahtar passphrase'li ise (SiteGround'da üretilen anahtarlar zorunlu passphrase ister) |
+
+> **SiteGround'da üretilen anahtarlar passphrase zorunludur.** Bu durumda anahtarı
+> olduğu gibi kullan ve `SITEGROUND_SSH_PASSPHRASE` secret'ını ekle — workflow,
+> passphrase'i yalnızca runner içinde kaldırıp bağlanır. Public anahtar SiteGround'da
+> zaten otomatik yetkilidir.
 
 Secrets eklenmeden önceki çalışmalar deploy adımını **atlar** (hata vermez, uyarı yazar).
 Eklendikten sonra: **Actions → Deploy to SiteGround → Run workflow** ile elle de tetikleyebilirsiniz.

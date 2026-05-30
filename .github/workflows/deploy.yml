@@ -48,6 +48,12 @@ jobs:
           mkdir -p ~/.ssh
           printf '%s\n' "${{ secrets.SITEGROUND_SSH_KEY }}" > ~/.ssh/id_deploy
           chmod 600 ~/.ssh/id_deploy
+          # Anahtar passphrase'li ise (ör. SiteGround'da üretilen) runner içinde passphrase'i kaldır
+          if [ -n "${{ secrets.SITEGROUND_SSH_PASSPHRASE }}" ]; then
+            ssh-keygen -p -f ~/.ssh/id_deploy -P "${{ secrets.SITEGROUND_SSH_PASSPHRASE }}" -N "" >/dev/null \
+              && echo "Passphrase kaldırıldı (yalnızca runner içinde)." \
+              || { echo "::error title=Passphrase hatalı::SITEGROUND_SSH_PASSPHRASE anahtarla eşleşmiyor."; exit 1; }
+          fi
           PORT="${{ secrets.SITEGROUND_SSH_PORT }}"
           PORT="${PORT:-18765}"
           ssh-keyscan -p "$PORT" -H "${{ secrets.SITEGROUND_SSH_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null || true
@@ -63,10 +69,19 @@ jobs:
           set -euo pipefail
           PORT="${SG_PORT:-18765}"
           DEST="${SG_DEST:?SITEGROUND_DEPLOY_PATH secret gerekli}"
+          SSH="ssh -i ~/.ssh/id_deploy -p ${PORT} -o StrictHostKeyChecking=accept-new"
+          echo "Hedef dizin doğrulanıyor: ${SG_USER}@${SG_HOST}:${DEST}"
+          # Güvenlik: hedef dizin yoksa dur (yanlış yola --delete ile yazmayı önler)
+          # Not: ${DEST} tırnaksız gönderilir ki uzak kabukta '~' düzgün genişlesin.
+          if ! $SSH "${SG_USER}@${SG_HOST}" "test -d ${DEST}"; then
+            echo "::error title=Hatalı deploy yolu::'${DEST}' uzak sunucuda yok. SITEGROUND_DEPLOY_PATH'i kontrol edin (SSH ile 'realpath ~/www/<domain>/public_html')."
+            exit 1
+          fi
           echo "Deploying dist/ -> ${SG_USER}@${SG_HOST}:${DEST} (port ${PORT})"
           rsync -avz --delete \
             --exclude '.well-known/' \
-            -e "ssh -i ~/.ssh/id_deploy -p ${PORT} -o StrictHostKeyChecking=accept-new" \
+            --exclude '_old/' \
+            -e "$SSH" \
             dist/ "${SG_USER}@${SG_HOST}:${DEST}"
 
       - name: Summary

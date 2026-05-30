@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="WOLFSE">
+  <rect width="64" height="64" rx="14" fill="#0b0e13"/>
+  <!-- soyut kurt başı + lazer -->
+  <path d="M14 18l9 6 9-7 9 7 9-6-3 17c0 12-8 19-15 21-7-2-15-9-15-21z" fill="none" stroke="#ff5a1f" stroke-width="3" stroke-linejoin="round"/>
+  <circle cx="25" cy="33" r="2.4" fill="#ff8a3d"/>
+  <circle cx="39" cy="33" r="2.4" fill="#ff8a3d"/>
+  <path d="M32 6v8" stroke="#ff5a1f" stroke-width="3" stroke-linecap="round"/>
+</svg>

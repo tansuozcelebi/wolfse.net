@@ -1,0 +1,19 @@
+{
+  "name": "wolfse-net",
+  "version": "1.0.0",
+  "private": true,
+  "description": "WOLFSE — B2B CNC fiber lazer kesim ve fason metal işleme firma tanıtım sitesi. Statik site jeneratörü ile üretilir.",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/rasterize.js && node scripts/build.js",
+    "build:html": "node scripts/build.js",
+    "clean": "node -e \"import('node:fs').then(fs=>fs.rmSync('dist',{recursive:true,force:true}))\"",
+    "serve": "node scripts/serve.js",
+    "dev": "node scripts/build.js && node scripts/serve.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "UNLICENSED",
+  "author": "WOLFSE"
+}

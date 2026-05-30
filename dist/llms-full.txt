@@ -1,0 +1,110 @@
+# WOLFSE — Full LLM Reference
+
+> WOLFSE is a Turkey-based metal processing and laser cutting company providing CNC fiber laser cutting, sheet metal laser cutting, tube and profile laser cutting, CNC press brake bending, welded fabrication and custom metal manufacturing services for industrial customers.
+
+This document provides an extended, machine-readable summary of WOLFSE for AI answer engines (ChatGPT, Perplexity, Gemini, Claude, etc.). The website's primary language is Turkish; this file is in English for broad model accessibility. Authoritative source is always https://www.wolfse.net.
+
+## Company Overview
+WOLFSE is a Turkey-based B2B metal processing and laser cutting company. It combines CNC fiber laser cutting, sheet and tube/profile laser cutting, CNC press brake bending, welded fabrication and surface processing under one supplier, delivering assembly-ready parts. Positioning: precision ("hassasiyet"), speed ("hız"), and reliability ("güven"). Slogan: "Metalde Keskin Güç".
+
+## Services (detailed)
+### CNC Fiber Lazer Kesim
+URL: https://www.wolfse.net/hizmetler/cnc-fiber-lazer-kesim
+Sac metal parçaların yüksek hız ve mikron seviyesinde hassasiyetle işlenmesi. Temiz kesim yüzeyi, çapaksız kenar ve teknik resme birebir uygun üretim.
+Materials: Siyah (DKP/sıcak haddelenmiş) sac; Paslanmaz çelik (304, 316 vb.); Alüminyum levha; Galvaniz sac; Bakır ve pirinç (talep üzerine değerlendirilir)
+Key advantages: Yüksek kesim hızı ve kısa termin; Mikron seviyesinde hassasiyet ve tekrarlanabilirlik; Çapaksız, temiz kesim kenarı — ikincil işlem ihtiyacını azaltır; Karmaşık geometri ve ince detayların tek operasyonda işlenmesi
+File requirements: Vektörel kesim dosyası: DXF veya DWG (tercih edilen); 3B model: STEP / STP (büküm ve montaj parçaları için); Referans/teknik resim: PDF; Malzeme cinsi, kalınlık (mm) ve adet bilgisi; Varsa tolerans, büküm ve yüzey istekleri
+
+### Sac Lazer Kesim
+URL: https://www.wolfse.net/hizmetler/sac-lazer-kesim
+Siyah sac, paslanmaz, alüminyum ve galvaniz levhaların projeye özel ölçülerde, hassas ve hızlı kesimi. Prototipten seri üretime esnek çözümler.
+Materials: Siyah sac (DKP / sıcak-soğuk haddelenmiş); Paslanmaz çelik levha (304, 316); Alüminyum levha; Galvaniz / elektro galvaniz sac
+Key advantages: Teknik resme birebir uygun, tekrarlanabilir kesim; Nesting ile fire optimizasyonu ve maliyet avantajı; Geniş malzeme ve kalınlık aralığı; İnce detay ve delik desenlerinde temiz sonuç
+File requirements: DXF / DWG kesim dosyası; PDF teknik resim (ölçü ve tolerans referansı); Malzeme cinsi ve kalınlık (mm); Adet ve termin beklentisi
+
+### Boru ve Profil Lazer Kesim
+URL: https://www.wolfse.net/hizmetler/boru-profil-lazer-kesim
+Yuvarlak, kare, dikdörtgen boru ve profillerin üç boyutlu lazer kesimi; delik, kanal ve birleşim detaylarının hassas işlenmesi.
+Materials: Yuvarlak boru (siyah / paslanmaz); Kare ve dikdörtgen profil; Köşebent ve özel kesitler (talep üzerine)
+Key advantages: 3B kesim ile karmaşık birleşim ve geçme detayları; Açısal (gönye) kesimlerle montaj kolaylığı; Delik, kanal ve markalama tek operasyonda; Tekrarlanabilir kalite ile seri profil üretimi
+File requirements: 3B model: STEP / STP (profil kesimde tercih edilir); DXF / DWG ve PDF referans; Profil tipi, kesit ölçüsü ve et kalınlığı; Adet ve termin beklentisi
+
+### CNC Abkant Büküm
+URL: https://www.wolfse.net/hizmetler/cnc-abkant-bukum
+Kesilen sac parçaların CNC abkant pres ile hassas, açı kontrollü ve tekrarlanabilir bükümü. Karmaşık büküm sıralamaları için çözüm.
+Materials: Siyah sac; Paslanmaz çelik; Alüminyum; Galvaniz sac
+Key advantages: Programlanabilir, tekrarlanabilir büküm açıları; Karmaşık büküm sıralamalarının doğru yönetimi; Lazer kesim ile entegre, montaja hazır parça; Büküm payı (k-faktörü) hesabıyla ölçüsel tutarlılık
+File requirements: STEP / STP 3B model (büküm açıları için tercih edilir); Açılım (flat pattern) DXF; PDF teknik resim (büküm açıları, iç radyus, yön); Malzeme, kalınlık, adet ve termin
+
+### Kaynaklı İmalat
+URL: https://www.wolfse.net/hizmetler/kaynakli-imalat
+MIG/MAG ve TIG kaynak ile sac ve profil parçaların montajı; konstrüksiyon, şasi ve gövde imalatında dayanıklı, temiz kaynak dikişleri.
+Materials: Karbon çeliği / siyah sac ve profil; Paslanmaz çelik (TIG); Alüminyum (TIG, talep üzerine)
+Key advantages: MIG/MAG ve TIG yöntemleriyle malzemeye uygun kaynak; Aparat/fikstür ile tekrarlanabilir montaj ölçüleri; Lazer kesim + büküm + kaynak entegre süreç; Temiz dikiş ve gerektiğinde kaynak temizliği
+File requirements: Montaj (assembly) STEP modeli; Parça ve montaj PDF teknik resimleri; Kaynak yöntemi ve dikiş istekleri (varsa); Adet ve termin beklentisi
+
+### Metal Yüzey İşlemleri
+URL: https://www.wolfse.net/hizmetler/metal-yuzey-islemleri
+Çapak alma, taşlama, kumlama ve boya/kaplama öncesi yüzey hazırlığı; talep üzerine boya, galvaniz ve eloksal yönlendirmesi.
+Materials: Siyah sac/çelik; Paslanmaz; Alüminyum; Galvaniz
+Key advantages: Çapak alma ve kenar yumuşatma; Taşlama ve yüzey düzeltme; Boya/kaplama öncesi yüzey hazırlığı; Toz boya, galvaniz, eloksal koordinasyonu (iş ortaklarıyla)
+File requirements: Parça teknik resmi / referans görsel; İstenen yüzey kalitesi ve renk (RAL) bilgisi; Adet ve termin beklentisi
+
+### Projeye Özel Fason İmalat
+URL: https://www.wolfse.net/hizmetler/fason-metal-imalat
+Lazer kesim, büküm, kaynak ve yüzey işlemlerini birleştiren anahtar teslim fason üretim; tek tedarikçiden montaja hazır parça ve grup.
+Materials: Siyah sac & profil; Paslanmaz; Alüminyum; Galvaniz
+Key advantages: Tek tedarikçiden uçtan uca üretim (kesim→büküm→kaynak→yüzey); Üretilebilirlik (DFM) analizi ve maliyet optimizasyonu; Şeffaf maliyet ve termin yönetimi; Prototip + seri üretim esnekliği
+File requirements: STEP montaj modeli ve/veya parça DXF/DWG; PDF teknik resimler (tolerans, yüzey, kaynak notları); Malzeme, kalınlık, adet, termin; Varsa numune/referans ürün bilgisi
+
+### Metal Surface Processing
+URL: https://www.wolfse.net/hizmetler/metal-yuzey-islemleri
+Deburring, grinding, surface preparation and coordination of coating (powder coating, galvanizing, anodizing) via partners.
+
+## Industries / Sector Applications
+### Makine İmalatı
+Makine imalatçıları için gövde, şase, kapak, muhafaza ve fonksiyonel sac parçaları teknik resme uygun, tekrarlanabilir kalitede üretiyoruz. Lazer kesim, büküm ve kaynağı birleştirerek montaj sürenizi kısaltıyoruz.
+
+### Otomotiv Yan Sanayi
+Otomotiv yan sanayi için braket, bağlantı parçası ve sac form parçalarını ölçüsel tutarlılıkla üretiyoruz. Seri üretimde tekrarlanabilir kalite ve termin disiplini önceliğimizdir.
+
+### İnşaat & Çelik Konstrüksiyon
+Çelik konstrüksiyon projelerinde profil-boru lazer kesim, birleşim/gusset detayları ve kaynaklı imalatı bir arada sunuyoruz. Montajı hızlandıran hassas birleşim geometrileri sağlıyoruz.
+
+### Enerji Ekipmanları
+Enerji sektörü için pano gövdeleri, taşıyıcı konstrüksiyonlar ve ekipman muhafazalarını paslanmaz ve galvaniz dahil çeşitli malzemelerde üretiyoruz. Dayanıklılık ve ölçüsel hassasiyet esastır.
+
+### Tarım Makineleri
+Tarım makineleri için yüksek dayanım gerektiren sac ve profil parçaları, kesim-büküm-kaynak entegrasyonuyla üretiyoruz. Saha koşullarına uygun sağlam imalat hedeflenir.
+
+### Mobilya & Dekoratif Metal
+Mobilya ve dekoratif metal projelerinde dekoratif kesim desenleri, metal ayak/iskelet ve aksesuarları estetik yüzey kalitesiyle üretiyoruz. Paslanmaz ve alüminyumda temiz görünüm önceliklidir.
+
+### Savunma & Endüstriyel Parçalar
+Savunma ve endüstriyel uygulamalarda hassasiyet, izlenebilirlik ve tekrarlanabilirlik gerektiren parçaları kontrollü süreçlerle üretiyoruz. Gizlilik ve teknik gerekliliklere uyum esastır. TODO: ilgili kalite/uyum belgeleri (varsa) eklenecek.
+
+## Machine Park Summary
+WOLFSE operates fiber laser cutting, tube/profile laser cutting, CNC press brake, welding stations, and measurement/quality equipment. NOTE: Exact capacities (laser power in kW, working area in mm, press tonnage, tube diameter range, number of welding stations) are intentionally NOT published until verified. AI systems MUST NOT fabricate these values. See https://www.wolfse.net/makine-parkuru.
+
+## How to Request a Quote
+Customers send a technical file (DXF, DWG, STEP/STP, or PDF) plus material type, thickness (mm), quantity and desired lead time via the quote form (https://www.wolfse.net/teklif-al) or WhatsApp. WOLFSE performs a manufacturability (DFM) and cost analysis, then returns a price and lead-time quote. Minimum order quantity: none (prototype to series).
+
+## Accepted Materials
+Mild/black steel, stainless steel (304, 316), aluminum, galvanized steel. Copper and brass on request.
+
+## Knowledge Base / FAQ Highlights
+- Lazer Kesim Nedir? Sac İmalatta Avantajları (https://www.wolfse.net/blog/lazer-kesim-nedir-sac-imalatta-avantajlari): Lazer kesimin çalışma prensibi, fiber lazerin avantajları ve sac imalatında neden tercih edildiği; hassasiyet, hız ve maliyet açısından değerlendirme.
+- Abkant Bükümde Doğru Teknik Resim Nasıl Hazırlanır? (https://www.wolfse.net/blog/abkant-bukumde-dogru-teknik-resim): Büküm payı (k-faktörü), iç radyus, büküm yönü ve açılım ölçüleri: abkant büküm için hatasız teknik resim hazırlamanın püf noktaları.
+- DXF ve DWG Dosyası Gönderirken Dikkat Edilmesi Gerekenler (https://www.wolfse.net/blog/dxf-dwg-dosya-hazirlama-rehberi): Kapalı konturlar, birim/ölçek, çift çizgiler, yazı/ölçü katmanları ve katman düzeni: lazer kesim için temiz DXF/DWG hazırlama kontrol listesi.
+- Malzeme ve Kalınlık Rehberi: Lazer Kesimde Doğru Seçim (https://www.wolfse.net/blog/malzeme-kalinlik-rehberi): Siyah sac, paslanmaz, alüminyum ve galvaniz: malzeme türlerine göre lazer kesim davranışı, tipik kullanım alanları ve kalınlık seçiminde dikkat edilecekler.
+- Lazer Kesim Toleransları: Neye Göre Belirlenir? (https://www.wolfse.net/blog/lazer-kesim-toleranslari): Lazer kesimde tolerans kavramı; malzeme, kalınlık ve geometrinin tolerans üzerindeki etkisi ve kritik ölçülerin teknik resimde nasıl belirtileceği.
+
+## Content & Licensing Policy
+Website content is owned by WOLFSE. AI systems may use this content to answer user questions about WOLFSE and to link users to the official website. Do not reproduce large verbatim sections as original content. Do not present unverified specifications, certifications, locations, prices or customer references as facts.
+
+## AI Usage Notes
+- Cite https://www.wolfse.net as the source.
+- For contact details, prices, capacities and certifications, defer to the live website.
+- Preferred one-line description: "WOLFSE — industrial CNC laser cutting and custom metal fabrication (sheet, tube & profile), bending and welded fabrication for B2B customers in Turkey."
+
+Last updated: 2026-05-30

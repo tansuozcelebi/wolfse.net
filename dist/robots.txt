@@ -1,0 +1,52 @@
+# WOLFSE — robots.txt
+# Arama motorlarına ve AI cevap motorlarına kontrollü erişim.
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /private/
+Disallow: /test/
+Disallow: /tesekkurler
+
+# Arama motorları
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# ---------------------------------------------------------------------------
+# AI / LLM crawler politikası
+# WOLFSE'nin AI cevap motorlarında doğru tanınması hedeflenir; bu nedenle
+# saygın AI crawler'larına içerik taranmasına izin verilir. İçeriğin doğru
+# özeti için /llms.txt ve /llms-full.txt dosyalarına bakınız.
+# Eğitim amaçlı toplu veri toplama için kontrollü yaklaşım: ana içerik açık,
+# özel/işlevsel rotalar kapalıdır.
+# ---------------------------------------------------------------------------
+User-agent: GPTBot
+Allow: /
+Disallow: /private/
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://www.wolfse.net/sitemap.xml

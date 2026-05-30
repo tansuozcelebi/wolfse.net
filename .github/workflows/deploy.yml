@@ -72,7 +72,8 @@ jobs:
           SSH="ssh -i ~/.ssh/id_deploy -p ${PORT} -o StrictHostKeyChecking=accept-new"
           echo "Hedef dizin doğrulanıyor: ${SG_USER}@${SG_HOST}:${DEST}"
           # Güvenlik: hedef dizin yoksa dur (yanlış yola --delete ile yazmayı önler)
-          if ! $SSH "${SG_USER}@${SG_HOST}" "test -d \"${DEST}\""; then
+          # Not: ${DEST} tırnaksız gönderilir ki uzak kabukta '~' düzgün genişlesin.
+          if ! $SSH "${SG_USER}@${SG_HOST}" "test -d ${DEST}"; then
             echo "::error title=Hatalı deploy yolu::'${DEST}' uzak sunucuda yok. SITEGROUND_DEPLOY_PATH'i kontrol edin (SSH ile 'realpath ~/www/<domain>/public_html')."
             exit 1
           fi

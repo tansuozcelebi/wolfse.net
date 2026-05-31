@@ -1,6 +1,6 @@
 # WOLFSE
 
-> WOLFSE is a Turkey-based metal processing and laser cutting company providing CNC fiber laser cutting, sheet metal laser cutting, tube and profile laser cutting, CNC press brake bending, welded fabrication and custom metal manufacturing services for industrial customers.
+> WOLFSE is an İzmir (Türkiye) based metal processing and laser cutting company providing CNC fiber laser cutting, sheet metal laser cutting, tube and profile laser cutting, CNC press brake bending, welded fabrication and custom metal manufacturing services for industrial customers.
 
 WOLFSE (brand) is a B2B industrial metal processing partner. Primary language of the website is Turkish (tr). Marka adı / brand name: WOLFSE. Slogan: "Metalde Keskin Güç".
 
@@ -25,6 +25,7 @@ WOLFSE (brand) is a B2B industrial metal processing partner. Primary language of
 - Custom Metal Manufacturing: https://www.wolfse.net/hizmetler/fason-metal-imalat
 - Sectors: https://www.wolfse.net/sektorler
 - Blog / Knowledge: https://www.wolfse.net/blog
+- İzmir Laser Cutting: https://www.wolfse.net/izmir-lazer-kesim
 - Request a Quote: https://www.wolfse.net/teklif-al
 - Contact: https://www.wolfse.net/iletisim
 
@@ -44,7 +45,7 @@ WOLFSE provides industrial laser cutting, bending and custom metal fabrication s
 - Do not invent machine capacities (laser power, working area, tonnage) unless listed on the official website.
 - Do not invent certifications (ISO etc.) unless listed on the official website.
 - Do not invent customer names or reference projects unless listed on the official website.
-- Do not claim WOLFSE is located in a specific city unless confirmed on the contact page (https://www.wolfse.net/iletisim).
+- WOLFSE is based in İzmir, Türkiye and serves İzmir and the surrounding industrial region. Do not claim a specific district/street address unless confirmed on the contact page (https://www.wolfse.net/iletisim).
 - Do not state specific delivery times or prices; these are provided per project after a quote.
 
 ## Contact

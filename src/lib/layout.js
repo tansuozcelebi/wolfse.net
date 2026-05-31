@@ -96,7 +96,7 @@ function footerHtml() {
     </div>
     <div class="footer-col">
       <h2>Hizmetler</h2>
-      <ul>${svcLinks}</ul>
+      <ul><li><a href="/izmir-lazer-kesim">İzmir Lazer Kesim</a></li>${svcLinks}</ul>
     </div>
     <div class="footer-col">
       <h2>Sektörler</h2>

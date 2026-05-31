@@ -23,6 +23,7 @@ import { sectorsIndexPage, sectorPages } from "../src/pages/sectors.js";
 import { blogIndexPage, blogPostPages } from "../src/pages/blog.js";
 import { sssPage, thankYouPage } from "../src/pages/misc.js";
 import { quotePage } from "../src/pages/quote.js";
+import { izmirLazerKesimPage } from "../src/pages/izmirLazerKesim.js";
 import { contactPage } from "../src/pages/contact.js";
 import { kurtGorevdePage } from "../src/pages/kurt-gorevde.js";
 import { kvkkPage, cerezPage, gizlilikPage } from "../src/pages/legal.js";
@@ -48,6 +49,7 @@ const pages = [
   blogIndexPage(),
   ...blogPostPages(),
   sssPage(),
+  izmirLazerKesimPage(),
   quotePage(),
   thankYouPage(),
   contactPage(),
@@ -167,7 +169,7 @@ function urlEntry(loc, { lastmod = today, changefreq = "monthly", priority = "0.
 // Sayfa öncelikleri
 function priorityFor(p) {
   if (p === "/") return "1.0";
-  if (p === "/teklif-al" || p === "/hizmetler" || p === "/iletisim") return "0.9";
+  if (p === "/teklif-al" || p === "/hizmetler" || p === "/iletisim" || p === "/izmir-lazer-kesim") return "0.9";
   if (p.startsWith("/hizmetler/") || p === "/makine-parkuru") return "0.8";
   if (p.startsWith("/sektorler") || p.startsWith("/blog")) return "0.7";
   if (["/kvkk", "/cerez-politikasi", "/gizlilik-politikasi", "/tesekkurler"].includes(p)) return "0.3";
@@ -289,6 +291,7 @@ const importantPages = [
   ["Custom Metal Manufacturing", "/hizmetler/fason-metal-imalat"],
   ["Sectors", "/sektorler"],
   ["Blog / Knowledge", "/blog"],
+  ["İzmir Laser Cutting", "/izmir-lazer-kesim"],
   ["Request a Quote", "/teklif-al"],
   ["Contact", "/iletisim"],
 ];
@@ -316,7 +319,7 @@ WOLFSE provides industrial laser cutting, bending and custom metal fabrication s
 - Do not invent machine capacities (laser power, working area, tonnage) unless listed on the official website.
 - Do not invent certifications (ISO etc.) unless listed on the official website.
 - Do not invent customer names or reference projects unless listed on the official website.
-- Do not claim WOLFSE is located in a specific city unless confirmed on the contact page (${site.domain}/iletisim).
+- WOLFSE is based in İzmir, Türkiye and serves İzmir and the surrounding industrial region. Do not claim a specific district/street address unless confirmed on the contact page (${site.domain}/iletisim).
 - Do not state specific delivery times or prices; these are provided per project after a quote.
 
 ## Contact
@@ -352,7 +355,7 @@ const llmsFull = `# WOLFSE — Full LLM Reference
 This document provides an extended, machine-readable summary of WOLFSE for AI answer engines (ChatGPT, Perplexity, Gemini, Claude, etc.). The website's primary language is Turkish; this file is in English for broad model accessibility. Authoritative source is always ${site.domain}.
 
 ## Company Overview
-WOLFSE is a Turkey-based B2B metal processing and laser cutting company. It combines CNC fiber laser cutting, sheet and tube/profile laser cutting, CNC press brake bending, welded fabrication and surface processing under one supplier, delivering assembly-ready parts. Positioning: precision ("hassasiyet"), speed ("hız"), and reliability ("güven"). Slogan: "${site.slogan}".
+WOLFSE is an İzmir (Türkiye) based B2B metal processing and laser cutting company. It combines CNC fiber laser cutting, sheet and tube/profile laser cutting, CNC press brake bending, welded fabrication and surface processing under one supplier, delivering assembly-ready parts. Positioning: precision ("hassasiyet"), speed ("hız"), and reliability ("güven"). Slogan: "${site.slogan}".
 
 ## Services (detailed)
 ${serviceBlocks}

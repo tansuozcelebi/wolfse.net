@@ -14,9 +14,9 @@ export const site = {
   slogan: "Metalde Keskin Güç",
   tagline: "Lazer Kesimde Hız, Hassasiyet ve Güven",
   description:
-    "WOLFSE; CNC fiber lazer kesim, sac lazer kesim, boru-profil lazer kesim, abkant büküm ve kaynaklı imalat süreçlerinde hızlı teklif, hassas üretim ve güvenilir teslimat sunan modern B2B metal işleme partneridir.",
+    "WOLFSE; İzmir merkezli CNC fiber lazer kesim, sac lazer kesim, boru-profil lazer kesim, abkant büküm ve kaynaklı imalat süreçlerinde hızlı teklif, hassas üretim ve güvenilir teslimat sunan modern B2B metal işleme partneridir.",
   descriptionEn:
-    "WOLFSE is a Turkey-based metal processing and laser cutting company providing CNC fiber laser cutting, sheet metal laser cutting, tube and profile laser cutting, CNC press brake bending, welded fabrication and custom metal manufacturing services for industrial customers.",
+    "WOLFSE is an İzmir (Türkiye) based metal processing and laser cutting company providing CNC fiber laser cutting, sheet metal laser cutting, tube and profile laser cutting, CNC press brake bending, welded fabrication and custom metal manufacturing services for industrial customers.",
 
   // İletişim — gerçek bilgi gelene kadar placeholder
   contact: {
@@ -27,7 +27,7 @@ export const site = {
     salesEmail: "erol@wolfse.net", // TODO: gerçek e-posta doğrulanacak
     addressLine: "TODO: açık adres girilecek",
     district: "TODO: ilçe",
-    city: "TODO: il",
+    city: "İzmir",
     postalCode: "TODO",
     country: "Türkiye",
     countryCode: "TR",

@@ -109,7 +109,7 @@ export function homePage() {
 
   return {
     path: "/",
-    title: `${site.brand} | ${site.slogan} — CNC Lazer Kesim & Fason Metal İşleme`,
+    title: `${site.brand} | İzmir Lazer Kesim & Fason Metal İşleme — ${site.slogan}`,
     description: site.description,
     ogType: "website",
     extraSchema: [faqSchema(generalFaqs)],

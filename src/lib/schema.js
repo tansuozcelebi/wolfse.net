@@ -63,7 +63,10 @@ export function organizationSchema() {
       email: site.contact.email,
       availableLanguage: ["tr", "en"],
     },
-    areaServed: { "@type": "Country", name: "Türkiye" },
+    areaServed: [
+      { "@type": "City", name: "İzmir" },
+      { "@type": "Country", name: "Türkiye" },
+    ],
     knowsAbout: [
       "CNC fiber lazer kesim",
       "Sac lazer kesim",
@@ -128,7 +131,10 @@ export function serviceSchema(svc) {
     description: svc.metaDescription,
     url: abs("/hizmetler/" + svc.slug),
     provider: { "@id": orgId },
-    areaServed: { "@type": "Country", name: "Türkiye" },
+    areaServed: [
+      { "@type": "City", name: "İzmir" },
+      { "@type": "Country", name: "Türkiye" },
+    ],
     category: "Metal işleme / Lazer kesim",
   };
 }

@@ -9,6 +9,8 @@
     "build:html": "node scripts/build.js",
     "clean": "node -e \"import('node:fs').then(fs=>fs.rmSync('dist',{recursive:true,force:true}))\"",
     "serve": "node scripts/serve.js",
+    "sitemap": "node scripts/sitemap.js",
+    "sitemap:ping": "node scripts/sitemap.js --ping",
     "dev": "node scripts/build.js && node scripts/serve.js"
   },
   "engines": {

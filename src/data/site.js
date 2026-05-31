@@ -58,6 +58,11 @@ export const site = {
   // Cloudflare Turnstile veya reCAPTCHA site anahtarı
   turnstileSiteKey: "", // TODO: Cloudflare Turnstile site key (önerilen)
 
+  // IndexNow anahtarı (Bing/Yandex'e anlık güncelleme bildirimi için).
+  // Boş bırakılabilir; INDEXNOW_KEY ortam değişkeni de kullanılabilir.
+  // Üretmek için: node -e "console.log(require('crypto').randomUUID().replace(/-/g,''))"
+  indexNowKey: "", // ör. "a1b2c3...." (32+ hex). Boşsa IndexNow atlanır.
+
   buildDate: new Date().toISOString().slice(0, 10),
 };
 

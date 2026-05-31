@@ -80,6 +80,22 @@ Betik önce `npm run build:html` ile `dist/`'i tazeleyip rsync ile yükler.
 
 ---
 
+## Sitemap güncelleme
+
+Sitemap her `npm run build`'de otomatik üretilir. Bağımsız güncellemek için:
+
+```bash
+npm run sitemap        # dist/ tarayıp sitemap'leri güncel tarihle yeniden yaz
+npm run sitemap:ping   # + IndexNow ile Bing/Yandex'e "güncellendi" bildir
+```
+
+- `noindex` sayfalar (ör. /tesekkurler) otomatik hariç tutulur.
+- IndexNow için `src/data/site.js` içinde `indexNowKey` ayarlayın ya da
+  `INDEXNOW_KEY=...` ortam değişkeni verin. Anahtar dosyası (`<key>.txt`)
+  otomatik üretilir ve site kökünden erişilebilir olmalıdır.
+- Google: sitemap ping kaldırıldığı için Search Console'a tek sefer gönderim
+  yeterlidir; Google kendi takvimiyle yeniden tarar.
+
 ## 3) Yayın sonrası kontrol
 
 - `https://www.wolfse.net/` açılıyor mu?

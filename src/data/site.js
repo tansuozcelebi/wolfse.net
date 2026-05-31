@@ -23,8 +23,8 @@ export const site = {
     phoneDisplay: "0 (535) 699 72 73",
     phoneHref: "+905356997273",
     whatsappNumber: "905356997273",
-    email: "info@wolfse.net", // TODO: gerçek e-posta doğrulanacak
-    salesEmail: "teklif@wolfse.net", // TODO: gerçek e-posta doğrulanacak
+    email: "erol@wolfse.net", // TODO: gerçek e-posta doğrulanacak
+    salesEmail: "erol@wolfse.net", // TODO: gerçek e-posta doğrulanacak
     addressLine: "TODO: açık adres girilecek",
     district: "TODO: ilçe",
     city: "TODO: il",
@@ -65,7 +65,6 @@ export const site = {
 // Ana navigasyon
 // ---------------------------------------------------------------------------
 export const nav = [
-  { label: "Anasayfa", href: "/" },
   {
     label: "Kurumsal",
     href: "/kurumsal",
@@ -97,8 +96,13 @@ export const nav = [
       { label: "DXF/DWG Dosya Hazırlama", href: "/blog/dxf-dwg-dosya-hazirlama-rehberi" },
     ],
   },
-  { label: "Teklif Al", href: "/teklif-al", cta: true },
-  { label: "İletişim", href: "/iletisim" },
+  {
+    label: "İletişim",
+    href: "/iletisim",
+    children: [
+      { label: "Teklif Al", href: "/teklif-al" },
+    ],
+  },
 ];
 
 // ---------------------------------------------------------------------------

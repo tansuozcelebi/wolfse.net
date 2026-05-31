@@ -194,4 +194,45 @@
         });
     });
   }
+
+  /* ---- Video Modal ---- */
+  function initVideoModal() {
+    var modal = document.getElementById("video-modal");
+    var video = document.getElementById("intro-video");
+    var closeBtn = document.querySelector(".video-close-btn");
+
+    if (!modal || !video || !closeBtn) return;
+
+    function closeModal() {
+      modal.classList.remove("active");
+      closeBtn.classList.remove("show");
+      video.pause();
+      video.currentTime = 0;
+      document.body.classList.remove("nav-open");
+    }
+
+    // Sayfa yüklendiğinde modal'ı göster
+    function showModal() {
+      modal.classList.add("active");
+      var pr = video.play();
+      if (pr && typeof pr.catch === "function") {
+        // Otomatik oynatma engellenirse (iOS) kapat butonunu hemen göster
+        pr.catch(function () { closeBtn.classList.add("show"); });
+      }
+    }
+
+    // Video bittiğinde close butonu göster
+    video.addEventListener("ended", function () { closeBtn.classList.add("show"); });
+    closeBtn.addEventListener("click", closeModal);
+    modal.addEventListener("click", function (e) { if (e.target === modal) closeModal(); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape" && modal.classList.contains("active")) closeModal(); });
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", showModal);
+    } else {
+      showModal();
+    }
+  }
+
+  initVideoModal();
 })();

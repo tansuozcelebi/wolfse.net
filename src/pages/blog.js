@@ -36,7 +36,6 @@ export function blogIndexPage() {
       <div class="grid grid-3">
         ${posts.map(blogCard).join("\n        ")}
       </div>
-      ${pageSummary("Bu sayfa WOLFSE teknik bilgi merkezindeki blog yazılarını ve rehberleri listeler: lazer kesim, abkant büküm, malzeme & kalınlık, toleranslar ve DXF/DWG dosya hazırlama.")}
     </div>
   </section>
   ${ctaBand("Projeniz İçin Teknik Destek Alın")}
@@ -77,7 +76,6 @@ export function blogPostPages() {
       ${renderBody(post.body)}
       </div>
       ${relatedLinks("İlgili İçerik & Sayfalar", related)}
-      ${pageSummary(`Bu yazı, "${post.title}" konusunu WOLFSE'nin metal işleme uzmanlığı perspektifinden açıklar.`)}
     </div>
   </article>
   ${ctaBand("Sorularınız mı Var? Teklif Sürecini Başlatın")}

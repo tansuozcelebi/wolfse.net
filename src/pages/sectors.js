@@ -17,7 +17,6 @@ export function sectorsIndexPage() {
       <div class="grid grid-3">
         ${sectors.map(sectorCard).join("\n        ")}
       </div>
-      ${pageSummary("Bu sayfa WOLFSE'nin hizmet verdiği sektörleri (makine imalatı, otomotiv yan sanayi, çelik konstrüksiyon, enerji, tarım makineleri, mobilya & dekoratif metal, savunma & endüstriyel) listeler.")}
     </div>
   </section>
   ${ctaBand("Sektörünüze Özel Çözüm İçin Teklif Alın")}
@@ -63,8 +62,6 @@ export function sectorPages() {
       <p>${sec.title} alanında; teknik resme uygun üretim, tekrarlanabilir kalite ve hızlı termin ile tedarik zincirinizi sadeleştiriyoruz. Kesim, büküm, kaynak ve yüzey işlemlerini tek tedarikçide birleştirerek montaja hazır parça teslim ediyoruz.</p>
 
       ${relatedLinks("İlgili Sayfalar", related)}
-
-      ${pageSummary(`Bu sayfa WOLFSE'nin ${sec.title} sektörüne yönelik metal işleme ve lazer kesim çözümlerini, uygun hizmetleri ve avantajlarını açıklar.`)}
     </div>
   </section>
   ${ctaBand(`${sec.title} Projeniz İçin Teklif Alın`)}

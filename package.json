@@ -15,5 +15,8 @@
     "node": ">=18"
   },
   "license": "UNLICENSED",
-  "author": "WOLFSE"
+  "author": "WOLFSE",
+  "devDependencies": {
+    "sharp": "^0.34.5"
+  }
 }

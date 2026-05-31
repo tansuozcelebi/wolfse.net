@@ -24,6 +24,7 @@ import { blogIndexPage, blogPostPages } from "../src/pages/blog.js";
 import { sssPage, thankYouPage } from "../src/pages/misc.js";
 import { quotePage } from "../src/pages/quote.js";
 import { contactPage } from "../src/pages/contact.js";
+import { kurtGorevdePage } from "../src/pages/kurt-gorevde.js";
 import { kvkkPage, cerezPage, gizlilikPage } from "../src/pages/legal.js";
 import { notFoundPage } from "../src/pages/notfound.js";
 
@@ -50,6 +51,7 @@ const pages = [
   quotePage(),
   thankYouPage(),
   contactPage(),
+  kurtGorevdePage(),
   kvkkPage(),
   cerezPage(),
   gizlilikPage(),

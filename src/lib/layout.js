@@ -58,7 +58,7 @@ function headerHtml(currentPath) {
   return `<header class="site-header" id="top">
   <div class="container header-inner">
     <a class="brand" href="/" aria-label="${site.brand} anasayfa">
-      <img class="brand-img" src="/assets/logo/wolfse-brand.png" alt="${site.brand} — Lazer Kesim" width="200" height="200" fetchpriority="high">
+      <img class="brand-img" src="/assets/logo/wolfse_logo_120.png" alt="${site.brand} — Lazer Kesim" width="200" height="200" fetchpriority="high">
     </a>
     <button class="nav-toggle" aria-label="Menüyü aç/kapat" aria-expanded="false" aria-controls="primary-nav">
       ${icon("menu", "icon nav-open-ic")}${icon("close", "icon nav-close-ic")}
@@ -89,7 +89,7 @@ function footerHtml() {
   return `<footer class="site-footer">
   <div class="container footer-grid">
     <div class="footer-col footer-brand">
-      <a class="brand" href="/"><img class="brand-img" src="/assets/logo/wolfse-brand.png" alt="${site.brand} — Lazer Kesim" width="160" height="160" loading="lazy"></a>
+      <a class="brand" href="/"><img class="brand-img" src="/assets/logo/wolfse_logo_120.png" alt="${site.brand} — Lazer Kesim" width="160" height="160" loading="lazy"></a>
       <p>${esc(site.description)}</p>
       <p class="footer-slogan">“${esc(site.slogan)}”</p>
       ${social ? `<div class="social">${social}</div>` : ""}
@@ -234,6 +234,16 @@ ${bodyHtml}
   ${footerHtml()}
   ${floatingWhatsApp()}
   ${cookieBanner()}
+  <!-- Video Modal -->
+  <div class="video-modal" id="video-modal">
+    <div class="video-modal-content">
+      <video id="intro-video" controls preload="metadata">
+        <source src="/assets/video/wolfse-anim.mp4" type="video/mp4">
+        Tarayıcınız video oynatmayı desteklemiyor.
+      </video>
+      <button class="video-close-btn" aria-label="Videoyu kapat">×</button>
+    </div>
+  </div>
   <script>window.WOLFSE_IDS=${JSON.stringify({
     ga4: site.analytics.ga4,
     adsId: site.analytics.googleAdsConversionId,

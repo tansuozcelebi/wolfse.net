@@ -54,7 +54,10 @@ export function hakkimizdaPage() {
   ${breadcrumbHtml(crumbs)}
   <section class="section">
     <div class="container narrow">
-      <h1>Hakkımızda</h1>
+      <div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem;">
+        <img src="/assets/logo/wolfse-logo.png" alt="WOLFSE" style="width: 200px; height: auto; flex-shrink: 0;">
+        <h1 style="margin: 0;">Hakkımızda</h1>
+      </div>
       <p class="lead">${site.brand}, sac ve profil metal işleme alanında hız, hassasiyet ve güvenilirliği bir araya getiren modern bir fason üretim partneridir.</p>
       <p>${site.brand}; CNC fiber lazer kesim, sac lazer kesim, boru-profil lazer kesim, CNC abkant büküm, kaynaklı imalat ve metal yüzey işlemlerini tek çatı altında sunar. Teknik resimden montaja hazır parçaya kadar tüm süreci yönetir; sanayi müşterilerinin tedarik zincirini sadeleştirir.</p>
       <p>Yaklaşımımız üç temele dayanır: <strong>ölçülebilir kapasite</strong>, <strong>net proses</strong> ve <strong>hızlı geri dönüş</strong>. "Biz en iyisiyiz" söylemi yerine; şeffaf maliyet, tekrarlanabilir kalite ve zamanında teslimat taahhüt ederiz.</p>
@@ -65,9 +68,6 @@ export function hakkimizdaPage() {
       <h2>Çalışma Biçimimiz</h2>
       <p>Teknik dosyanızı (DXF, DWG, STEP, PDF) aldığımızda üretilebilirlik analizini yapar; malzeme, kalınlık, tolerans ve termin konularını netleştirerek size şeffaf bir teklif sunarız. Onay sonrası kesim, büküm, kaynak ve yüzey işlemlerini koordine ederek parçanızı montaja hazır teslim ederiz.</p>
 
-      <div class="callout">
-        <p><strong>Not:</strong> Kuruluş yılı, üretim alanı, ekip büyüklüğü ve referans bilgileri gerçek verilerle güncellenecektir. <span class="todo">TODO: kurumsal künye bilgileri girilecek.</span></p>
-      </div>
     </div>
   </section>
   ${ctaBand("Projenizi Konuşalım")}

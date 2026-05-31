@@ -109,6 +109,52 @@ for (const page of pages) {
 const nf = notFoundPage();
 write(path.join(DIST, "404.html"), renderPage(nf, nf.body));
 
+// 3b) Varlık referans doğrulaması (büyük/küçük harf duyarlı)
+// SiteGround/Linux harf duyarlı olduğundan, koddaki yol ile diskteki dosya
+// adı tam eşleşmezse deploy'da kırılır. Build aşamasında yakalayalım.
+(function verifyAssets() {
+  const htmlFiles = [];
+  (function collect(dir) {
+    for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+      const fp = path.join(dir, e.name);
+      if (e.isDirectory()) collect(fp);
+      else if (e.name.endsWith(".html")) htmlFiles.push(fp);
+    }
+  })(DIST);
+
+  // Diskte dosya var mı? — harf duyarlı kontrol (readdir ile birebir ad eşleşmesi)
+  const existsCaseSensitive = (relPath) => {
+    const abs = path.join(DIST, relPath);
+    if (!fs.existsSync(abs)) return false;
+    // Her segmenti gerçek dizin listesiyle birebir karşılaştır
+    let cur = DIST;
+    for (const seg of relPath.split("/")) {
+      if (!seg) continue;
+      const entries = fs.readdirSync(cur);
+      if (!entries.includes(seg)) return false;
+      cur = path.join(cur, seg);
+    }
+    return true;
+  };
+
+  const missing = new Set();
+  const re = /(?:src|href)="(\/(?:assets|css|js)\/[^"?#]+)/g;
+  for (const f of htmlFiles) {
+    const html = fs.readFileSync(f, "utf8");
+    let m;
+    while ((m = re.exec(html))) {
+      const rel = m[1].replace(/^\//, "");
+      if (!existsCaseSensitive(rel)) missing.add(m[1]);
+    }
+  }
+  if (missing.size) {
+    console.error("\n✗ HATA: Aşağıdaki varlık(lar) diskte bulunamadı (büyük/küçük harf uyuşmazlığı olabilir):");
+    for (const x of missing) console.error("   - " + x);
+    console.error("Linux/SiteGround harf duyarlıdır; dosya adı ile koddaki yol birebir eşleşmeli.\n");
+    process.exit(1);
+  }
+})();
+
 // 4) Sitemap'ler
 const today = site.buildDate;
 function urlEntry(loc, { lastmod = today, changefreq = "monthly", priority = "0.7", images = [] } = {}) {

@@ -5,16 +5,41 @@
   /* ---- Mobil menü ---- */
   var toggle = document.querySelector(".nav-toggle");
   var nav = document.getElementById("primary-nav");
+  var header = document.querySelector(".site-header");
+
+  // Header yüksekliğini ölç ve CSS değişkenine yaz — menü paneli tam header'ın
+  // altından başlasın (sabit 68px varsayımı iOS Safari + büyük logoda kayıyordu).
+  function syncHeaderHeight() {
+    if (!header) return;
+    var h = Math.round(header.getBoundingClientRect().height);
+    if (h) document.documentElement.style.setProperty("--header-h", h + "px");
+  }
+  syncHeaderHeight();
+  window.addEventListener("resize", syncHeaderHeight, { passive: true });
+  window.addEventListener("orientationchange", function () {
+    setTimeout(syncHeaderHeight, 250);
+  });
+  window.addEventListener("load", syncHeaderHeight);
+
   if (toggle && nav) {
-    toggle.addEventListener("click", function () {
-      var open = nav.classList.toggle("open");
+    var setMenu = function (open) {
+      nav.classList.toggle("open", open);
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      document.body.classList.toggle("nav-open", open);
+    };
+    toggle.addEventListener("click", function (e) {
+      e.preventDefault();
+      syncHeaderHeight();
+      setMenu(!nav.classList.contains("open"));
     });
     nav.addEventListener("click", function (e) {
-      if (e.target.tagName === "A" && nav.classList.contains("open")) {
-        nav.classList.remove("open");
-        toggle.setAttribute("aria-expanded", "false");
-      }
+      if (e.target.closest("a") && nav.classList.contains("open")) setMenu(false);
+    });
+    // Menü açıkken dışarı dokununca kapat
+    document.addEventListener("click", function (e) {
+      if (!nav.classList.contains("open")) return;
+      if (e.target.closest("#primary-nav") || e.target.closest(".nav-toggle")) return;
+      setMenu(false);
     });
   }
 

@@ -84,6 +84,14 @@ jobs:
             -e "$SSH" \
             dist/ "${SG_USER}@${SG_HOST}:${DEST}"
 
+      - name: IndexNow bildirimi (Bing/Yandex)
+        if: steps.cfg.outputs.configured == 'true'
+        continue-on-error: true
+        run: |
+          # Deploy bittikten sonra çalışır; anahtar dosyası canlıda erişilebilir olur.
+          # Hata olsa bile deploy'u başarısız saymayız (continue-on-error).
+          node scripts/sitemap.js --ping
+
       - name: Summary
         if: always()
         run: |

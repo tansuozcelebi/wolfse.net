@@ -11,6 +11,7 @@
     "serve": "node scripts/serve.js",
     "sitemap": "node scripts/sitemap.js",
     "sitemap:ping": "node scripts/sitemap.js --ping",
+    "secrets": "bash scripts/gen-secrets.sh",
     "dev": "node scripts/build.js && node scripts/serve.js"
   },
   "engines": {

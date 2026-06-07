@@ -34,6 +34,21 @@ olmayabilir. GitHub'da:
 
 ---
 
+### Secret'ları otomatik üret
+
+`gen-secrets` scripti passphrase'siz SSH anahtarı + IndexNow anahtarı üretir ve
+eklenecek tüm secret'ları listeler (kendi makinende çalıştır):
+
+```bash
+npm run secrets          # üret + ekrana yazdır
+npm run secrets -- --set # üret + gh CLI ile GitHub'a otomatik yaz (gh gerekli)
+```
+
+- Üretilen **public** anahtarı SiteGround → SSH Keys Manager → Import ile ekle.
+- Üretilen **private** anahtarı `SITEGROUND_SSH_KEY` secret'ına koy.
+- Bu yöntemde anahtar passphrase'siz olduğundan `SITEGROUND_SSH_PASSPHRASE` gerekmez.
+- Private anahtar `.secrets/` altına yazılır (gitignore'lu); kimseyle paylaşma.
+
 ## A) Otomatik deploy — GitHub Actions (önerilen)
 
 `.github/workflows/deploy.yml` hazır. `main`'e her push'ta site derlenir ve yüklenir.

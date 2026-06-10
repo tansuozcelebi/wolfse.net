@@ -8,7 +8,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { site, services, sectors, posts } from "../src/data/site.js";
-import { renderPage } from "../src/lib/layout.js";
+import { renderPage, slashify } from "../src/lib/layout.js";
 
 import { homePage } from "../src/pages/home.js";
 import { servicesIndexPage, servicePages } from "../src/pages/services.js";
@@ -163,7 +163,7 @@ function urlEntry(loc, { lastmod = today, changefreq = "monthly", priority = "0.
   const imgs = images
     .map((img) => `<image:image><image:loc>${site.domain}${img}</image:loc></image:image>`)
     .join("");
-  return `  <url><loc>${site.domain}${loc}</loc><lastmod>${lastmod}</lastmod><changefreq>${changefreq}</changefreq><priority>${priority}</priority>${imgs}</url>`;
+  return `  <url><loc>${site.domain}${slashify(loc)}</loc><lastmod>${lastmod}</lastmod><changefreq>${changefreq}</changefreq><priority>${priority}</priority>${imgs}</url>`;
 }
 
 // Sayfa öncelikleri

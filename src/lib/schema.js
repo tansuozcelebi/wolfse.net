@@ -1,7 +1,18 @@
 // JSON-LD schema üreticileri. Gerçek olmayan veri uydurulmaz; bilinmeyenler atlanır.
 import { site } from "../data/site.js";
 
-const abs = (path) => (path.startsWith("http") ? path : site.domain + path);
+// Sayfa yollarını sunucunun servis ettiği biçimle (trailing slash) hizalar;
+// dosya uzantılı (.png vb.) ve kök yollar dokunulmaz.
+function slashify(p) {
+  if (typeof p !== "string" || !p.startsWith("/") || p === "/") return p;
+  const i = p.search(/[#?]/);
+  const base = i === -1 ? p : p.slice(0, i);
+  const rest = i === -1 ? "" : p.slice(i);
+  if (/\.[a-zA-Z0-9]+$/.test(base) || base.endsWith("/")) return p;
+  return base + "/" + rest;
+}
+
+const abs = (path) => (path.startsWith("http") ? path : site.domain + slashify(path));
 
 // Placeholder/boş değerleri JSON-LD'ye koymamak için temizleyici
 const clean = (obj) => {

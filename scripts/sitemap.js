@@ -67,7 +67,11 @@ const allPages = pages.filter((p) => (seen.has(p.url) ? false : seen.add(p.url))
 allPages.sort((a, b) => a.url.localeCompare(b.url));
 
 // ---- Öncelik / sıklık ----
-const pathOf = (u) => u.replace(site.domain, "") || "/";
+const pathOf = (u) => {
+  let p = u.replace(site.domain, "") || "/";
+  if (p !== "/" && p.endsWith("/")) p = p.slice(0, -1); // sınıflandırma için trailing slash'ı yok say
+  return p;
+};
 function priorityFor(u) {
   const p = pathOf(u);
   if (p === "/") return "1.0";

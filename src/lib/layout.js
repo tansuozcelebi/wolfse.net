@@ -17,6 +17,22 @@ const esc = (str = "") =>
 
 const abs = (path = "/") => (path.startsWith("http") ? path : site.domain + path);
 
+// Trailing-slash normalleştirme: Apache, dizin/index.html sayfalarını sonu "/"
+// ile servis eder. Canonical/sitemap/iç linkleri de aynı biçime getirerek
+// "alternatif sayfa (canonical)" indeks tutarsızlığını önleriz.
+// Dosya uzantılı yollar (.xml, .txt, .png ...), kök "/", harici ve hash/sorgu
+// yolları dokunulmadan bırakılır.
+export function slashify(p = "/") {
+  if (typeof p !== "string" || !p.startsWith("/")) return p;
+  if (p === "/") return p;
+  const hashIdx = p.search(/[#?]/);
+  const pathPart = hashIdx === -1 ? p : p.slice(0, hashIdx);
+  const rest = hashIdx === -1 ? "" : p.slice(hashIdx);
+  if (/\.[a-zA-Z0-9]+$/.test(pathPart)) return p; // dosya uzantısı varsa dokunma
+  if (pathPart.endsWith("/")) return p;
+  return pathPart + "/" + rest;
+}
+
 // WhatsApp linki (placeholder numara varsa yine de iletişime yönlendirir)
 export function whatsappLink(prefill = "Merhaba, WOLFSE için bir proje hakkında teklif almak istiyorum.") {
   const num = site.contact.whatsappNumber.replace(/\D/g, "");
@@ -154,7 +170,7 @@ function metaHead(page) {
     extraHead = "",
   } = page;
 
-  const canonical = abs(path);
+  const canonical = abs(slashify(path));
   const ogImage = abs(image);
 
   // Her sayfada ortak schema: Organization + WebSite + WebPage
@@ -222,9 +238,16 @@ export function breadcrumbHtml(crumbs) {
 
 export { breadcrumbSchema };
 
+// Tüm iç linklere (href="/...") trailing slash ekler ki sunucunun servis ettiği
+// URL ile birebir eşleşsin (301 yönlendirme zinciri ve canonical tutarsızlığı olmasın).
+// Dosya uzantılı, hash/sorgu içeren ve kök linkler korunur.
+function normalizeInternalLinks(html) {
+  return html.replace(/href="(\/[A-Za-z0-9_\-\/]*)"/g, (m, p) => `href="${slashify(p)}"`);
+}
+
 // Ana sayfa iskeleti
 export function renderPage(page, bodyHtml) {
-  return `${metaHead(page)}
+  const html = `${metaHead(page)}
 <body${page.bodyClass ? ` class="${page.bodyClass}"` : ""}>
   <a class="skip-link" href="#main">İçeriğe geç</a>
   ${headerHtml(page.path)}
@@ -254,6 +277,7 @@ ${bodyHtml}
   <script src="/js/main.js" defer></script>
 </body>
 </html>`;
+  return normalizeInternalLinks(html);
 }
 
 export { esc, abs };

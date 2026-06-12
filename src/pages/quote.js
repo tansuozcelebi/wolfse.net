@@ -50,17 +50,6 @@ export function quotePage() {
       </div>
     </div>
   </section>
-
-  <section class="section quote-video-section">
-    <div class="container">
-      <div style="width: 100%; background: #000; display: flex; justify-content: center; align-items: center; border-radius: 14px; overflow: hidden;">
-        <video width="100%" height="auto" controls style="width: 100%; height: auto; max-width: 100%;">
-          <source src="/assets/video/wolfse-anim.mp4" type="video/mp4">
-          Tarayıcınız video oynatmayı desteklemiyor.
-        </video>
-      </div>
-    </div>
-  </section>
   `;
 
   return {

@@ -257,16 +257,6 @@ ${bodyHtml}
   ${footerHtml()}
   ${floatingWhatsApp()}
   ${cookieBanner()}
-  <!-- Video Modal -->
-  <div class="video-modal" id="video-modal">
-    <div class="video-modal-content">
-      <video id="intro-video" controls preload="metadata">
-        <source src="/assets/video/wolfse-anim.mp4" type="video/mp4">
-        Tarayıcınız video oynatmayı desteklemiyor.
-      </video>
-      <button class="video-close-btn" aria-label="Videoyu kapat">×</button>
-    </div>
-  </div>
   <script>window.WOLFSE_IDS=${JSON.stringify({
     ga4: site.analytics.ga4,
     adsId: site.analytics.googleAdsConversionId,

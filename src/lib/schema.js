@@ -190,3 +190,18 @@ export function contactPageSchema() {
     inLanguage: "tr-TR",
   };
 }
+
+export function videoObjectSchema({ name, description, contentPath, pagePath }) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    name,
+    description,
+    thumbnailUrl: [abs("/assets/logo/wolfse-og.png")],
+    uploadDate: site.buildDate,
+    contentUrl: abs(contentPath),
+    ...(pagePath ? { embedUrl: abs(pagePath) } : {}),
+    publisher: { "@id": orgId },
+    inLanguage: "tr-TR",
+  };
+}

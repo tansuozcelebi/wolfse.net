@@ -108,6 +108,7 @@ function footerHtml() {
       <a class="brand" href="/"><img class="brand-img" src="/assets/logo/wolfse_logo_120.png" alt="${site.brand} — Lazer Kesim" width="160" height="160" loading="lazy"></a>
       <p>${esc(site.description)}</p>
       <p class="footer-slogan">“${esc(site.slogan)}”</p>
+      <a class="btn btn-primary btn-sm footer-video-btn" href="/kurt-gorevde">${icon("bolt")}<span>Tanıtım Videosunu İzle</span></a>
       ${social ? `<div class="social">${social}</div>` : ""}
     </div>
     <div class="footer-col">

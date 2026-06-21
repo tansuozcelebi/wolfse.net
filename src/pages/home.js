@@ -43,6 +43,9 @@ export function homePage() {
 
   const body = `
   <section class="hero">
+    <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="/assets/logo/wolfse-og.png" aria-hidden="true">
+      <source src="/assets/video/wolfse-anim.mp4" type="video/mp4">
+    </video>
     <div class="hero-bg" aria-hidden="true"><span class="laser-beam"></span><span class="grid-overlay"></span></div>
     <div class="container hero-inner">
       <h1>Çeliğe keskin bir diş: CNC Lazer Kesim ve Fason Metal İşleme Çözümleri</h1>

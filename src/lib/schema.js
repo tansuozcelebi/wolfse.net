@@ -85,6 +85,7 @@ export function organizationSchema() {
       "CNC abkant büküm",
       "Kaynaklı imalat",
       "Fason metal imalat",
+      "3D plastik baskı",
     ],
   };
 }

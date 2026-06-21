@@ -420,6 +420,54 @@ export const services = [
       { q: "Tek parça mı yoksa komple grup mu teslim ediyorsunuz?", a: "İhtiyacınıza göre tek parça, yarı mamul veya montajlı komple grup teslim edebiliriz." },
     ],
   },
+  {
+    slug: "3d-plastik-baski",
+    icon: "print3d",
+    title: "3D Plastik Baskı",
+    short:
+      "Son model hızlı 3D baskı makinesiyle prototipten fonksiyonel parçaya; kalıpsız, hızlı ve hassas plastik üretim. Endüstriyel ihtiyaçlara anında çözüm.",
+    cardText:
+      "3D plastik baskı hizmetimizle prototip, fonksiyonel parça ve düşük adetli üretimleri kalıpsız, hızlı ve ekonomik şekilde sağlıyoruz. Son model hızlı 3D yazıcımızla karmaşık geometrileri kısa termine işliyor; metal işleme süreçlerinizi tamamlayıcı plastik çözümler sunuyoruz. STL/STEP dosyanızı gönderin, hızlı teklif alın.",
+    seoTitle: "3D Plastik Baskı Hizmeti | Hızlı Prototip & Üretim | WOLFSE",
+    metaDescription:
+      "WOLFSE 3D plastik baskı: son model hızlı 3D yazıcı ile prototip, fonksiyonel parça ve düşük adetli üretim. Kalıpsız, hızlı ve hassas. STL/STEP gönderin, teklif alın.",
+    h1: "3D Plastik Baskı Hizmeti",
+    intro:
+      "3D plastik baskı; üç boyutlu modellerin katman katman üretilmesiyle kalıba gerek kalmadan prototip ve fonksiyonel parçaların hızla elde edilmesini sağlar. WOLFSE, son model hızlı 3D baskı makinesiyle endüstriyel ihtiyaçlarınıza kısa termin ve hassasiyetle çözüm üretir.",
+    summary:
+      "Bu sayfa WOLFSE'nin 3D plastik baskı hizmetini, kullanılabilen malzemeleri, dosya gereksinimlerini ve teklif sürecini açıklar.",
+    materials: [
+      "PLA",
+      "PETG",
+      "ABS / ASA",
+      "TPU (esnek)",
+      "Naylon (PA) — talep üzerine",
+    ],
+    sectors: ["makine-imalati", "otomotiv-yan-sanayi", "savunma-endustriyel", "enerji-ekipmanlari"],
+    advantages: [
+      "Kalıpsız üretim — düşük adetlerde ekonomik",
+      "Hızlı prototipleme ve kısa termin",
+      "Karmaşık geometrilerin tek parçada üretimi",
+      "Fonksiyonel test parçaları ve montaj kontrol modelleri",
+      "Metal işleme ile tamamlayıcı hibrit çözümler",
+      "Tasarım doğrulamadan seri öncesi üretime esneklik",
+    ],
+    fileReqs: [
+      "3B model: STL (tercih edilen) veya STEP / OBJ / 3MF",
+      "Adet, malzeme ve renk tercihi",
+      "Kritik ölçüler ve tolerans beklentisi",
+      "Kullanım amacı (görsel prototip / fonksiyonel parça)",
+    ],
+    quality:
+      "Baskı kalitesi malzeme, katman yüksekliği ve geometriye göre yönetilir; fonksiyonel parçalarda dolgu (infill) ve yönlendirme dayanımı etkiler. TODO: 3D yazıcının baskı hacmi (mm), teknolojisi (FDM/SLA vb.) ve katman çözünürlüğü eklenecek.",
+    faqs: [
+      { q: "3D baskı için hangi dosyayı göndermeliyim?", a: "İdeali STL'dir; STEP, OBJ veya 3MF de kabul ederiz. Adet, malzeme ve kullanım amacını belirtmeniz teklifi hızlandırır." },
+      { q: "Hangi malzemelerle baskı alıyorsunuz?", a: "PLA, PETG, ABS/ASA ve esnek TPU başta olmak üzere çeşitli plastikler. Naylon (PA) gibi mühendislik malzemeleri talep üzerine değerlendirilir." },
+      { q: "Maksimum baskı boyutu nedir?", a: "Baskı hacmi makineye göre değişir. TODO: gerçek baskı hacmi (mm x mm x mm) girilecek. Modelinizi gönderdiğinizde uygunluğu teyit ederiz." },
+      { q: "Tek parça mı, seri mi?", a: "Tek prototipten düşük-orta adetli seri üretime kadar çalışıyoruz; metal işleme süreçleriyle birlikte hibrit çözümler de sunuyoruz." },
+      { q: "Ne kadar hızlı teslim edebilirsiniz?", a: "Son model hızlı 3D yazıcımızla kısa termin hedefliyoruz; net süre parça boyutu ve adede göre teklifte belirtilir." },
+    ],
+  },
 ];
 
 // ---------------------------------------------------------------------------
@@ -712,6 +760,7 @@ export const quoteServiceOptions = [
   "CNC abkant büküm",
   "Kaynaklı imalat",
   "Fason metal imalat",
+  "3D plastik baskı",
   "Diğer",
 ];
 

@@ -19,6 +19,7 @@ export const icons = {
   shield: s('<path d="M12 2l8 3v6c0 5-3.4 8.5-8 11-4.6-2.5-8-6-8-11V5z"/><path d="M9 12l2 2 4-4"/>'),
   measure: s('<rect x="2" y="8" width="20" height="8" rx="1"/><path d="M6 8v3M10 8v4M14 8v3M18 8v4"/>'),
   tools: s('<path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2-2z"/>'),
+  print3d: s('<path d="M3 7l9-4 9 4-9 4z"/><path d="M3 7v6l9 4 9-4V7"/><path d="M12 11v10"/><path d="M7 14.5l5 2.2 5-2.2"/>'),
   bolt: s('<path d="M13 2L4 14h7l-1 8 9-12h-7z"/>'),
   clock: s('<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>'),
   file: s('<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/>'),

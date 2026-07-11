@@ -1,4 +1,5 @@
-import { site, services, sectors, posts } from "../data/site.js";
+import { site, services, sectors } from "../data/site.js";
+import { posts } from "../data/posts.js";
 import { icon } from "../lib/icons.js";
 import { whatsappLink } from "../lib/layout.js";
 import {

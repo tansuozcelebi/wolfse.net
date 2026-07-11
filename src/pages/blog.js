@@ -1,4 +1,4 @@
-import { posts } from "../data/site.js";
+import { posts } from "../data/posts.js";
 import { breadcrumbHtml } from "../lib/layout.js";
 import { breadcrumbSchema, articleSchema } from "../lib/schema.js";
 import { icon } from "../lib/icons.js";

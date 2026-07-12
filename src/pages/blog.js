@@ -1,6 +1,6 @@
 import { posts } from "../data/posts.js";
 import { breadcrumbHtml } from "../lib/layout.js";
-import { breadcrumbSchema, articleSchema } from "../lib/schema.js";
+import { breadcrumbSchema, articleSchema, faqSchema } from "../lib/schema.js";
 import { icon } from "../lib/icons.js";
 import { btn, sectionHeader, blogCard, formatDate, relatedLinks, ctaBand, pageSummary } from "../lib/components.js";
 
@@ -73,7 +73,7 @@ export function blogPostPages() {
         <p class="lead">${post.excerpt}</p>
       </header>
       <div class="post-body">
-      ${renderBody(post.body)}
+      ${post.bodyHtml ? post.bodyHtml : renderBody(post.body)}
       </div>
       ${relatedLinks("İlgili İçerik & Sayfalar", related)}
     </div>
@@ -86,7 +86,11 @@ export function blogPostPages() {
       title: post.seoTitle,
       description: post.metaDescription,
       ogType: "article",
-      extraSchema: [breadcrumbSchema(crumbs), articleSchema(post)],
+      extraSchema: [
+        breadcrumbSchema(crumbs),
+        articleSchema(post),
+        ...(post.faqs && post.faqs.length ? [faqSchema(post.faqs)] : []),
+      ],
       body,
     };
   });

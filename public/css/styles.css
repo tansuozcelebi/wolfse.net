@@ -295,6 +295,34 @@ ul.bullet li { margin-bottom: .4rem; }
 .post-body h2 { margin-top: 2rem; }
 .post-body h3 { margin-top: 1.4rem; color: var(--text); }
 
+/* ---------- Teknik rehber (uzun HTML gövde) ---------- */
+.wolfse-technical-guide { color: var(--text-2); }
+.wolfse-technical-guide h2 { margin-top: 2.4rem; scroll-margin-top: 90px; }
+.wolfse-technical-guide h3 { margin-top: 1.6rem; color: var(--text); scroll-margin-top: 90px; }
+.wolfse-technical-guide p { margin: 0 0 1rem; }
+.wolfse-technical-guide ul, .wolfse-technical-guide ol { padding-left: 1.3rem; margin: 0 0 1.1rem; }
+.wolfse-technical-guide li { margin-bottom: .45rem; }
+.wolfse-technical-guide strong { color: var(--text); }
+.wolfse-technical-guide a { color: var(--accent-2); }
+.wolfse-technical-guide blockquote {
+  margin: 1.4rem 0; padding: 1rem 1.3rem; background: var(--bg-3);
+  border-left: 3px solid var(--accent); border-radius: var(--radius-sm);
+}
+.wolfse-technical-guide blockquote p { margin: 0; }
+/* Tablolar mobilde yatay kaydırılır */
+.wolfse-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 1.2rem 0 1.6rem; border: 1px solid var(--border); border-radius: var(--radius-sm); }
+.wolfse-technical-guide table { width: 100%; border-collapse: collapse; font-size: .92rem; min-width: 520px; }
+.wolfse-technical-guide th, .wolfse-technical-guide td { padding: .6rem .85rem; text-align: left; border-bottom: 1px solid var(--border); vertical-align: top; }
+.wolfse-technical-guide thead th { background: var(--surface-2); color: #fff; font-weight: 600; position: sticky; top: 0; }
+.wolfse-technical-guide tbody tr:nth-child(even) { background: rgba(255,255,255,.02); }
+/* Kontrol listesi (checkbox'lı) */
+.wolfse-technical-guide .task-list-item { list-style: none; }
+.wolfse-technical-guide ul:has(.task-list-item) { padding-left: .2rem; }
+.wolfse-technical-guide .task-list-item-checkbox { margin-right: .55rem; accent-color: var(--accent); }
+.wolfse-check-list { list-style: none; padding-left: .2rem !important; }
+.wolfse-check-list li { position: relative; padding-left: 1.6rem; }
+.wolfse-check-list li::before { content: "✓"; position: absolute; left: 0; color: var(--ok); font-weight: 700; }
+
 /* ---------- Gallery ---------- */
 .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1rem; }
 @media (max-width: 700px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }

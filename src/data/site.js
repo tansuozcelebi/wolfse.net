@@ -3,6 +3,7 @@
 // Tek kaynak (single source of truth). Tüm sayfalar bu veriden üretilir.
 // Gerçek olmayan veriler TODO ile işaretlenmiştir; uydurma yapılmaz.
 // ---------------------------------------------------------------------------
+import { toleransRehberiHtml } from "./tolerans-rehberi.js";
 
 export const site = {
   brand: "WOLFSE",
@@ -719,9 +720,25 @@ export const posts = [
     category: "Teknik Rehber",
     excerpt:
       "Lazer kesimde tolerans kavramı; malzeme, kalınlık ve geometrinin tolerans üzerindeki etkisi ve kritik ölçülerin teknik resimde nasıl belirtileceği.",
-    seoTitle: "Lazer Kesim Toleransları Neye Göre Belirlenir? | WOLFSE",
+    seoTitle: "Lazer Kesim Toleransları: Kesim, Büküm & CNC İşleme Rehberi | WOLFSE",
     metaDescription:
-      "Lazer kesim toleransları: malzeme, kalınlık ve geometrinin etkisi, kritik ölçü belirtimi ve tolerans yönetimi. WOLFSE teknik rehberi.",
+      "Lazer kesim, plazma, abkant büküm, kaynak ve CNC işlemede toleranslar; teknik resim, ölçüm ve maliyet ilişkisiyle açıklayan kapsamlı WOLFSE rehberi.",
+    bodyHtml: toleransRehberiHtml,
+    faqs: [
+      { q: "Lazer kesim toleransı kaç mm'dir?", a: "Tek bir sabit değer yoktur. İnce ve normal geometrili saclarda dış kontur için yaklaşık ±0,10–0,20 mm seviyeleri mümkün olabilirken, kalın ve büyük parçalarda tolerans ±0,50 mm veya daha geniş olabilir. Nihai değer malzeme, kalınlık, geometri ve kontrol planına göre teyit edilmelidir." },
+      { q: "Lazer kesimle H7 delik yapılabilir mi?", a: "H7, hassas bir delik tolerans bölgesidir. Lazer kesim çoğu uygulamada H7 deliğin son işlemi olarak görülmemelidir. Delik lazerle paylı ön kesilip rayba veya boralama ile H7'ye tamamlanabilir." },
+      { q: "En küçük lazer kesim deliği ne kadar olabilir?", a: "Ön tasarımda delik çapının en az sac kalınlığı kadar seçilmesi güvenli bir başlangıçtır. Kalın paslanmaz veya alüminyumda daha büyük oran gerekebilir. Daha küçük delikler numune ve proses teyidi gerektirir." },
+      { q: "Lazer kesim sonrası parça neden eğilir?", a: "Sacın iç gerilimleri kesimle serbest kalabilir. Isı girdisi, uzun ince geometri, yoğun delik düzeni ve kesim sırası da deformasyona neden olabilir. Bu durum yalnızca makine hassasiyetiyle açıklanamaz." },
+      { q: "Büküm açısı toleransı kaç derece olmalıdır?", a: "Standart hava bükümde ±1° pratik bir başlangıçtır. Uygun takım, proses ayarı ve kontrolle ±0,5° değerlendirilebilir. Uzun, kalın veya yüksek dayanımlı parçalarda daha geniş tolerans gerekebilir." },
+      { q: "Büküm sonrası ölçü neden değişir?", a: "Gerçek sac kalınlığı, iç yarıçap, K-faktörü, kalıp açıklığı ve geri yaylanma açılım ile son ölçü arasındaki ilişkiyi etkiler. Üreticinin gerçek takım verileriyle açılım hesaplanmalıdır." },
+      { q: "Plazma mı, lazer mi daha hassastır?", a: "Genel olarak lazer daha dar kerf, daha küçük detay ve daha yüksek boyutsal hassasiyet sağlar. Plazma kalın levhada daha ekonomik olabilir. Seçim yalnızca toleransa değil kalınlık, yüzey ve toplam maliyete göre yapılmalıdır." },
+      { q: "Su jeti kesim ısı etkisi oluşturur mu?", a: "Su jeti belirgin bir termal kesim bölgesi oluşturmaz. Buna karşılık kalın malzemede kesim yüzeyi sapması ve hız-kalite dengesi dikkate alınmalıdır." },
+      { q: "CNC işleme her zaman ±0,01 mm midir?", a: "Hayır. CNC, otomatik kontrol edilen bir üretim yöntemidir; tolerans seviyesi değildir. ±0,01 mm bazı uygun özelliklerde mümkün olabilir, ancak parça boyutu, rijitlik, bağlama ve ölçüm koşulları değerlendirilmelidir." },
+      { q: "Teknik resimde bütün ölçülere tolerans vermeli miyim?", a: "Hayır. Kritik ölçüler bireysel olarak tanımlanmalı, diğer ölçüler uygun genel tolerans sistemine bağlanmalıdır. Aşırı toleranslandırma maliyeti ve çelişki riskini artırır." },
+      { q: "Boya sonrası ölçü değişir mi?", a: "Evet. Boya ve diğer kaplamalar yüzeylere kalınlık ekler. Dar geçmeler, dişler ve pim delikleri için maskeleme veya kaplama sonrası işleme planlanmalıdır." },
+      { q: "Kaynaklı montajda lazer kesim toleransı korunur mu?", a: "Her zaman korunmaz. Kaynak ısı girdisi çekme, eğilme ve burulma oluşturabilir. Kaynaklı montaj için ayrı tolerans ve gerekiyorsa kaynak sonrası işleme tanımlanmalıdır." },
+      { q: "Ölçüm raporu talep edilebilir mi?", a: "Evet. Kritik ölçüler, numune planı, cihaz, rapor formatı ve izlenebilirlik teklif aşamasında belirtilmelidir. Yüzde yüz kontrol ile örnekleme kontrolü farklı maliyet ve termin oluşturur." },
+    ],
     body: [
       ["h2", "Tolerans Nedir?"],
       ["p", "Tolerans; bir ölçünün kabul edilebilir sapma aralığıdır. Lazer kesimde tolerans; malzeme türü, sac kalınlığı, parça boyutu ve geometriye göre değişir."],

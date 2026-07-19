@@ -1,7 +1,7 @@
 import { site, quoteServiceOptions, quoteMaterialOptions } from "../data/site.js";
 import { icon } from "../lib/icons.js";
 import { breadcrumbHtml, whatsappLink } from "../lib/layout.js";
-import { breadcrumbSchema } from "../lib/schema.js";
+import { breadcrumbSchema, howToSchema } from "../lib/schema.js";
 import { btn, processSteps, pageSummary } from "../lib/components.js";
 
 const steps = [
@@ -56,7 +56,16 @@ export function quotePage() {
     path: "/teklif-al",
     title: "Hızlı Teklif Al | Lazer Kesim & Fason İmalat Teklifi | WOLFSE",
     description: "WOLFSE'den hızlı teklif alın: teknik dosyanızı (DXF/DWG/STEP/PDF) yükleyin; malzeme, kalınlık, adet ve termin bilgisiyle üretilebilirlik ve maliyet teklifini alın.",
-    extraSchema: [breadcrumbSchema(crumbs)],
+    extraSchema: [
+      breadcrumbSchema(crumbs),
+      howToSchema({
+        name: "WOLFSE'den lazer kesim / fason imalat teklifi nasıl alınır?",
+        description:
+          "Teknik dosyanızı gönderip malzeme, kalınlık ve adet bilgisiyle WOLFSE'den hızlı üretilebilirlik, maliyet ve termin teklifi alma adımları.",
+        steps,
+        url: "/teklif-al",
+      }),
+    ],
     body,
   };
 }

@@ -279,6 +279,29 @@ Sitemap: ${site.domain}/sitemap.xml
 `;
 write(path.join(DIST, "robots.txt"), robots);
 
+// 5b) Web App Manifest (PWA / mobil SEO sinyali)
+const webmanifest = JSON.stringify(
+  {
+    name: `${site.brand} — ${site.slogan}`,
+    short_name: site.brand,
+    description: site.description,
+    lang: "tr",
+    start_url: "/",
+    scope: "/",
+    display: "standalone",
+    background_color: "#0b0e13",
+    theme_color: "#0b0e13",
+    icons: [
+      { src: "/assets/logo/favicon.svg", type: "image/svg+xml", sizes: "any", purpose: "any" },
+      { src: "/assets/logo/apple-touch-icon.png", type: "image/png", sizes: "180x180" },
+      { src: "/assets/logo/wolfse_logo_120.png", type: "image/png", sizes: "512x512", purpose: "any maskable" },
+    ],
+  },
+  null,
+  2
+);
+write(path.join(DIST, "site.webmanifest"), webmanifest);
+
 // 6) llms.txt
 const importantPages = [
   ["Homepage", "/"],

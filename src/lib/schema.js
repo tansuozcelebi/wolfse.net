@@ -1,5 +1,5 @@
 // JSON-LD schema üreticileri. Gerçek olmayan veri uydurulmaz; bilinmeyenler atlanır.
-import { site } from "../data/site.js";
+import { site, services } from "../data/site.js";
 
 // Sayfa yollarını sunucunun servis ettiği biçimle (trailing slash) hizalar;
 // dosya uzantılı (.png vb.) ve kök yollar dokunulmaz.
@@ -87,6 +87,19 @@ export function organizationSchema() {
       "Fason metal imalat",
       "3D plastik baskı",
     ],
+    // GEO: AI cevap motorlarının hizmet-firma ilişkisini net kurması için
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "WOLFSE Hizmetleri",
+      itemListElement: services.map((s) => ({
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: s.title,
+          url: abs("/hizmetler/" + s.slug),
+        },
+      })),
+    },
   };
 }
 
@@ -118,6 +131,30 @@ export function webPageSchema({ url, name, description }) {
     inLanguage: "tr-TR",
     isPartOf: { "@id": websiteId },
     about: { "@id": orgId },
+    primaryImageOfPage: abs("/assets/logo/wolfse-og.png"),
+    // AEO/sesli asistan: cevap motorlarının okuyabileceği ana metin alanları
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["h1", ".lead", ".page-summary"],
+    },
+  };
+}
+
+// AEO: adım adım süreçler için HowTo şeması (ör. teklif alma süreci)
+export function howToSchema({ name, description, steps, url }) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name,
+    description,
+    ...(url ? { url: abs(url) } : {}),
+    inLanguage: "tr-TR",
+    step: steps.map((s, i) => ({
+      "@type": "HowToStep",
+      position: i + 1,
+      name: s.title,
+      text: s.text,
+    })),
   };
 }
 

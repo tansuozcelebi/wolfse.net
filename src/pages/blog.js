@@ -86,6 +86,9 @@ export function blogPostPages() {
       title: post.seoTitle,
       description: post.metaDescription,
       ogType: "article",
+      datePublished: post.date,
+      dateModified: post.dateModified || post.date,
+      section: post.category,
       extraSchema: [
         breadcrumbSchema(crumbs),
         articleSchema(post),

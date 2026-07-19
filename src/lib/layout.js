@@ -169,10 +169,26 @@ function metaHead(page) {
     robots = "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
     extraSchema = [],
     extraHead = "",
+    datePublished = "",
+    dateModified = "",
+    section = "",
   } = page;
 
   const canonical = abs(slashify(path));
   const ogImage = abs(image);
+
+  // Blog/makale sayfaları için ek Open Graph article meta'ları
+  const articleMeta =
+    ogType === "article"
+      ? [
+          datePublished ? `<meta property="article:published_time" content="${datePublished}">` : "",
+          `<meta property="article:modified_time" content="${dateModified || datePublished}">`,
+          section ? `<meta property="article:section" content="${esc(section)}">` : "",
+          `<meta property="article:publisher" content="${site.domain}">`,
+        ]
+          .filter(Boolean)
+          .join("\n  ")
+      : "";
 
   // Her sayfada ortak schema: Organization + WebSite + WebPage
   const baseSchema = [
@@ -196,6 +212,8 @@ function metaHead(page) {
   <meta name="theme-color" content="#0b0e13">
   <meta name="author" content="${esc(site.brand)}">
   <meta name="publisher" content="${esc(site.brand)}">
+  <meta name="geo.region" content="TR-35">
+  <meta name="geo.placename" content="İzmir">
 
   <!-- Open Graph -->
   <meta property="og:type" content="${ogType}">
@@ -206,6 +224,10 @@ function metaHead(page) {
   <meta property="og:url" content="${canonical}">
   <meta property="og:image" content="${ogImage}">
   <meta property="og:image:alt" content="${esc(site.brand)} — ${esc(site.slogan)}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/png">
+  ${articleMeta}
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
@@ -215,6 +237,7 @@ function metaHead(page) {
 
   <link rel="icon" href="/assets/logo/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/assets/logo/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
   <link rel="preload" href="/css/styles.css" as="style">
   <link rel="stylesheet" href="/css/styles.css">
   <link rel="sitemap" type="application/xml" href="/sitemap.xml">

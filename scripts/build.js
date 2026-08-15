@@ -300,7 +300,7 @@ const webmanifest = JSON.stringify(
   null,
   2
 );
-write(path.join(DIST, "site.webmanifest"), webmanifest);
+write(path.join(DIST, "manifest.json"), webmanifest);
 
 // 6) llms.txt
 const importantPages = [

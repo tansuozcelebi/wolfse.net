@@ -71,6 +71,38 @@
     if (consent === "kabul") loadAnalytics();
   }
 
+  /* ---- Kampanya penceresi (ilk girişte bir kez) ---- */
+  var promo = document.getElementById("promo-modal");
+  if (promo) {
+    var pVer = promo.getAttribute("data-version") || "1";
+    var pKey = "wolfse_promo_" + pVer;
+    var pEnd = promo.getAttribute("data-end");
+    var seen = false;
+    try { seen = !!localStorage.getItem(pKey); } catch (e) {}
+    // Bitiş tarihi geçtiyse gösterme (YYYY-MM-DD; gün sonuna kadar geçerli)
+    var expired = false;
+    if (pEnd) { var end = new Date(pEnd + "T23:59:59"); if (!isNaN(end) && Date.now() > end.getTime()) expired = true; }
+
+    var closePromo = function () {
+      promo.hidden = true;
+      document.documentElement.classList.remove("promo-open");
+      try { localStorage.setItem(pKey, "1"); } catch (e) {}
+    };
+
+    if (!seen && !expired) {
+      setTimeout(function () {
+        promo.hidden = false;
+        document.documentElement.classList.add("promo-open");
+      }, 700);
+      promo.querySelectorAll("[data-promo-dismiss]").forEach(function (el) {
+        el.addEventListener("click", function () { closePromo(); });
+      });
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && !promo.hidden) closePromo();
+      });
+    }
+  }
+
   /* ---- Analitik/pixel yükleme (onay sonrası) ----
      Gerçek ID'ler src/data/site.js içinde TODO olarak işaretlidir.
      Placeholder (XXXX) içeren ID'ler yüklenmez. */

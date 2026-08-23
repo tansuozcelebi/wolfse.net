@@ -68,6 +68,21 @@ export const site = {
 };
 
 // ---------------------------------------------------------------------------
+// Kampanya / duyuru penceresi (ilk girişte bir kez açılır, ok ile geçilir)
+// enabled:false yaparak kapatabilir; endDate sonrası otomatik gösterilmez.
+// ---------------------------------------------------------------------------
+export const promo = {
+  enabled: true,
+  endDate: "2026-09-30", // bu tarihten sonra pencere hiç gösterilmez
+  version: "eylul-2026", // metni güncelleyince değiştir → herkese tekrar gösterilir
+  badge: "Eylül'e Özel",
+  title: "Eylül Sürpriz İndirimleri!",
+  text: "Eylül ayına özel sürpriz indirimlerimizden ilk siz faydalanın. Teklif alırken kampanya kodunu belirtmeniz yeterli.",
+  cta: { label: "Hemen Teklif Al", href: "/teklif-al/" },
+  dismissLabel: "Geç",
+};
+
+// ---------------------------------------------------------------------------
 // Ana navigasyon
 // ---------------------------------------------------------------------------
 export const nav = [

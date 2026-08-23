@@ -1,4 +1,4 @@
-import { site, nav, services, sectors } from "../data/site.js";
+import { site, nav, services, sectors, promo } from "../data/site.js";
 import { icon } from "./icons.js";
 import {
   jsonLd,
@@ -159,6 +159,28 @@ function cookieBanner() {
   </div>`;
 }
 
+// Kampanya penceresi (ilk girişte JS ile açılır; ok/geç ile kapanır)
+function promoModal() {
+  if (!promo || !promo.enabled) return "";
+  const cta = promo.cta || {};
+  return `<div class="promo-modal" id="promo-modal"
+      data-end="${esc(promo.endDate || "")}" data-version="${esc(promo.version || "1")}" hidden>
+    <div class="promo-backdrop" data-promo-dismiss></div>
+    <div class="promo-card" role="dialog" aria-modal="true" aria-labelledby="promo-title">
+      <button class="promo-close" data-promo-dismiss aria-label="Kapat">${icon("close")}</button>
+      ${promo.badge ? `<span class="promo-badge">${icon("bolt")} ${esc(promo.badge)}</span>` : ""}
+      <h2 id="promo-title" class="promo-title">${esc(promo.title || "")}</h2>
+      <p class="promo-text">${esc(promo.text || "")}</p>
+      <div class="promo-actions">
+        ${cta.href ? `<a class="btn btn-primary btn-lg" href="${cta.href}" data-promo-dismiss>${icon("send")}<span>${esc(cta.label || "Teklif Al")}</span></a>` : ""}
+        <button class="promo-next" data-promo-dismiss aria-label="${esc(promo.dismissLabel || "Geç")}">
+          <span>${esc(promo.dismissLabel || "Geç")}</span>${icon("arrow")}
+        </button>
+      </div>
+    </div>
+  </div>`;
+}
+
 function metaHead(page) {
   const {
     title,
@@ -281,6 +303,7 @@ ${bodyHtml}
   ${footerHtml()}
   ${floatingWhatsApp()}
   ${cookieBanner()}
+  ${promoModal()}
   <script>window.WOLFSE_IDS=${JSON.stringify({
     ga4: site.analytics.ga4,
     adsId: site.analytics.googleAdsConversionId,

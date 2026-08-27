@@ -83,22 +83,51 @@
     var expired = false;
     if (pEnd) { var end = new Date(pEnd + "T23:59:59"); if (!isNaN(end) && Date.now() > end.getTime()) expired = true; }
 
-    var closePromo = function () {
+    var promoLastFocus = null;
+    var promoFocusables = function () {
+      return Array.prototype.slice.call(
+        promo.querySelectorAll('a[href], button:not([disabled])')
+      );
+    };
+    var promoTrap = function (e) {
+      if (e.key !== "Tab") return;
+      var f = promoFocusables();
+      if (!f.length) return;
+      var first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    };
+    var promoKey = function (e) {
+      if (e.key === "Escape" && !promo.hidden) closePromo();
+      else promoTrap(e);
+    };
+    var promoEvent = function (name) {
+      try { if (window.gtag) window.gtag("event", name, { event_category: "promo", event_label: pVer }); } catch (e) {}
+    };
+
+    var closePromo = function (fromCta) {
+      if (promo.hidden) return;
       promo.hidden = true;
       document.documentElement.classList.remove("promo-open");
+      document.removeEventListener("keydown", promoKey, true);
       try { localStorage.setItem(pKey, "1"); } catch (e) {}
+      promoEvent(fromCta ? "promo_cta_click" : "promo_dismiss");
+      if (promoLastFocus && promoLastFocus.focus) { try { promoLastFocus.focus(); } catch (e) {} }
     };
 
     if (!seen && !expired) {
       setTimeout(function () {
+        promoLastFocus = document.activeElement;
         promo.hidden = false;
         document.documentElement.classList.add("promo-open");
+        var f = promoFocusables();
+        if (f.length) f[0].focus(); // kapat (×) düğmesine odaklan — kazayla Enter kapatır
+        document.addEventListener("keydown", promoKey, true);
+        promoEvent("promo_view");
       }, 700);
       promo.querySelectorAll("[data-promo-dismiss]").forEach(function (el) {
-        el.addEventListener("click", function () { closePromo(); });
-      });
-      document.addEventListener("keydown", function (e) {
-        if (e.key === "Escape" && !promo.hidden) closePromo();
+        var isCta = el.tagName === "A" && el.getAttribute("href");
+        el.addEventListener("click", function () { closePromo(!!isCta); });
       });
     }
   }

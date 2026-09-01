@@ -26,6 +26,23 @@ DirectorySlash On
 
   # 3) Sondaki eğik çizgi: gerçek dizinler için mod_dir (DirectorySlash)
   #    otomatik 301 verir; bu yüzden ek kural gerekmez.
+
+  # 4) Eski WordPress kalıntı URL'leri -> en yakın kanonik sayfaya 301
+  #    (Site eskiden WordPress'ti; Google hâlâ bu yolları hatırlayıp 404/
+  #     yönlendirme olarak raporluyor. Hepsini gerçek sayfalara yönlendiriyoruz.)
+  RewriteRule ^feed/?$                 /       [L,R=301]
+  RewriteRule ^comments/feed/?$        /       [L,R=301]
+  RewriteRule ^(.+)/feed/?$            /$1/    [L,R=301]
+  RewriteRule ^hello-world/?$          /blog/  [L,R=301]
+  RewriteRule ^sample-page/?$          /       [L,R=301]
+  RewriteRule ^category(/.*)?$         /blog/  [L,R=301]
+  RewriteRule ^tag(/.*)?$              /blog/  [L,R=301]
+  RewriteRule ^author(/.*)?$           /kurumsal/ [L,R=301]
+  RewriteRule ^wp-login\.php$          /       [L,R=301]
+  RewriteRule ^wp-admin(/.*)?$         /       [L,R=301]
+  RewriteRule ^xmlrpc\.php$            /       [L,R=301]
+  RewriteRule ^wp-content(/.*)?$       /       [L,R=301]
+  RewriteRule ^wp-includes(/.*)?$      /       [L,R=301]
 </IfModule>
 
 # ---- 404 ----

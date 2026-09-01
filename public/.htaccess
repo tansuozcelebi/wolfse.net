@@ -30,6 +30,13 @@ DirectorySlash On
   # 4) Eski WordPress kalıntı URL'leri -> en yakın kanonik sayfaya 301
   #    (Site eskiden WordPress'ti; Google hâlâ bu yolları hatırlayıp 404/
   #     yönlendirme olarak raporluyor. Hepsini gerçek sayfalara yönlendiriyoruz.)
+  # 4a) Eski İngilizce içerik sayfaları -> yeni Türkçe karşılıkları (GSC 404'leri)
+  RewriteRule ^about-us/?$             /hakkimizda/  [L,R=301]
+  RewriteRule ^about/?$                /hakkimizda/  [L,R=301]
+  RewriteRule ^contact/?$              /iletisim/    [L,R=301]
+  RewriteRule ^services/?$             /hizmetler/   [L,R=301]
+
+  # 4b) WordPress altyapı/arşiv yolları -> en yakın kanonik sayfa
   RewriteRule ^feed/?$                 /       [L,R=301]
   RewriteRule ^comments/feed/?$        /       [L,R=301]
   RewriteRule ^(.+)/feed/?$            /$1/    [L,R=301]
@@ -38,11 +45,11 @@ DirectorySlash On
   RewriteRule ^category(/.*)?$         /blog/  [L,R=301]
   RewriteRule ^tag(/.*)?$              /blog/  [L,R=301]
   RewriteRule ^author(/.*)?$           /kurumsal/ [L,R=301]
-  RewriteRule ^wp-login\.php$          /       [L,R=301]
   RewriteRule ^wp-admin(/.*)?$         /       [L,R=301]
-  RewriteRule ^xmlrpc\.php$            /       [L,R=301]
   RewriteRule ^wp-content(/.*)?$       /       [L,R=301]
   RewriteRule ^wp-includes(/.*)?$      /       [L,R=301]
+  RewriteRule ^wp-[^/]*\.php$          /       [L,R=301]
+  RewriteRule ^xmlrpc\.php$            /       [L,R=301]
 </IfModule>
 
 # ---- 404 ----

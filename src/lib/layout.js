@@ -194,10 +194,19 @@ function metaHead(page) {
     datePublished = "",
     dateModified = "",
     section = "",
+    noCanonical = false,
   } = page;
 
   const canonical = abs(slashify(path));
   const ogImage = abs(image);
+
+  // 404 gibi hata sayfaları herhangi bir URL'de sunulduğundan canonical/hreflang
+  // taşımamalı (yoksa Google "yanlış canonical" sinyali alır). noCanonical ile atlanır.
+  const canonicalTags = noCanonical
+    ? ""
+    : `<link rel="canonical" href="${canonical}">
+  <link rel="alternate" hreflang="tr" href="${canonical}">
+  <link rel="alternate" hreflang="x-default" href="${canonical}">`;
 
   // Blog/makale sayfaları için ek Open Graph article meta'ları
   const articleMeta =
@@ -206,7 +215,7 @@ function metaHead(page) {
           datePublished ? `<meta property="article:published_time" content="${datePublished}">` : "",
           `<meta property="article:modified_time" content="${dateModified || datePublished}">`,
           section ? `<meta property="article:section" content="${esc(section)}">` : "",
-          `<meta property="article:publisher" content="${site.domain}">`,
+          `<meta property="article:publisher" content="${site.domain}/">`,
         ]
           .filter(Boolean)
           .join("\n  ")
@@ -228,9 +237,7 @@ function metaHead(page) {
   <title>${esc(title)}</title>
   <meta name="description" content="${esc(description)}">
   <meta name="robots" content="${esc(robots)}">
-  <link rel="canonical" href="${canonical}">
-  <link rel="alternate" hreflang="tr" href="${canonical}">
-  <link rel="alternate" hreflang="x-default" href="${canonical}">
+  ${canonicalTags}
   <meta name="theme-color" content="#0b0e13">
   <meta name="author" content="${esc(site.brand)}">
   <meta name="publisher" content="${esc(site.brand)}">

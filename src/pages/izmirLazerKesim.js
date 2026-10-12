@@ -98,7 +98,7 @@ export function izmirLazerKesimPage() {
         name: "İzmir Lazer Kesim",
         description:
           "İzmir merkezli CNC fiber lazer kesim, sac ve boru-profil lazer kesim, abkant büküm ve kaynaklı imalat hizmetleri.",
-        url: site.domain + "/izmir-lazer-kesim",
+        url: site.domain + "/izmir-lazer-kesim/",
         provider: { "@id": site.domain + "/#organization" },
         areaServed: { "@type": "City", name: "İzmir" },
         category: "Metal işleme / Lazer kesim",

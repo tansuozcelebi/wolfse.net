@@ -189,7 +189,9 @@ const pageUrls = indexablePages
   .join("\n");
 
 const blogUrls = indexablePages
-  .filter((p) => p.path.startsWith("/blog"))
+  // Yalnızca blog yazıları (/blog/<slug>/). Blog indeksi (/blog/) pages sitemap'inde
+  // yer alır; buraya dahil edilmez (çift kayıt önlenir).
+  .filter((p) => p.path.startsWith("/blog/"))
   .map((p) => {
     const post = posts.find((x) => "/blog/" + x.slug === p.path);
     return urlEntry(p.path, {

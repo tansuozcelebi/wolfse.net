@@ -21,6 +21,8 @@ export function notFoundPage() {
     title: "404 — Sayfa Bulunamadı | WOLFSE",
     description: "Aradığınız sayfa bulunamadı. WOLFSE anasayfasına dönün veya hizmetlerimizi inceleyin.",
     robots: "noindex, follow",
+    // 404 herhangi bir URL'de sunulur; canonical taşımamalı (bkz. layout.js metaHead).
+    noCanonical: true,
     extraSchema: [],
     body,
   };

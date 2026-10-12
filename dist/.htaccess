@@ -10,50 +10,65 @@ DirectorySlash On
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
-  # 1a) HTTP -> HTTPS  (SiteGround CDN/proxy uyumlu: X-Forwarded-Proto de kontrol
-  #     edilir; aksi halde SSL proxy'de sonlanınca sonsuz döngü oluşur)
+  # -------------------------------------------------------------------------
+  # 1) Kanonik origin: her zaman https://www.wolfse.net (tek hop)
+  # -------------------------------------------------------------------------
+  # 1a) Yanlış host (apex / farklı alt alan) -> www. Şema de https'e sabitlenir,
+  #     böylece http://wolfse.net/x tek adımda https://www.wolfse.net/x olur.
+  RewriteCond %{HTTP_HOST} !^www\.wolfse\.net$ [NC]
+  RewriteRule ^ https://www.wolfse.net%{REQUEST_URI} [R=301,L,NE]
+
+  # 1b) http -> https (host zaten www). SiteGround proxy'si SSL'i sonlandırınca
+  #     %{HTTPS} güvenilmez olabilir; X-Forwarded-Proto ile döngü engellenir.
   RewriteCond %{HTTPS} off
   RewriteCond %{HTTP:X-Forwarded-Proto} !https
-  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+  RewriteRule ^ https://www.wolfse.net%{REQUEST_URI} [R=301,L,NE]
 
-  # 1b) www olmayan -> www  (kanonik host)
-  RewriteCond %{HTTP_HOST} !^www\. [NC]
-  RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-
+  # -------------------------------------------------------------------------
   # 2) /yol/index.html -> /yol/  (index.html'i URL'den kaldır)
+  # -------------------------------------------------------------------------
   RewriteCond %{THE_REQUEST} \s/+(?:[^?\s]*/)?index\.html[\s?] [NC]
-  RewriteRule ^(.*/)?index\.html$ /%1 [L,R=301]
+  RewriteRule ^(.*/)?index\.html$ /%1 [R=301,L,NE]
 
-  # 3) Sondaki eğik çizgi: gerçek dizinler için mod_dir (DirectorySlash)
-  #    otomatik 301 verir; bu yüzden ek kural gerekmez.
+  # -------------------------------------------------------------------------
+  # 3) Eski İngilizce WordPress içerik sayfaları -> yeni Türkçe karşılık (301)
+  #    Bunların gerçek bir eşdeğeri var; bu yüzden 301 (soft-404 değil).
+  # -------------------------------------------------------------------------
+  RewriteRule ^(contact|contact-us|iletisim-2)/?$  https://www.wolfse.net/iletisim/   [R=301,L,NC]
+  RewriteRule ^(about|about-us)/?$                  https://www.wolfse.net/hakkimizda/ [R=301,L,NC]
+  RewriteRule ^services(/.*)?$                      https://www.wolfse.net/hizmetler/  [R=301,L,NC]
 
-  # 4) Eski WordPress kalıntı URL'leri -> en yakın kanonik sayfaya 301
-  #    (Site eskiden WordPress'ti; Google hâlâ bu yolları hatırlayıp 404/
-  #     yönlendirme olarak raporluyor. Hepsini gerçek sayfalara yönlendiriyoruz.)
-  # 4a) Eski İngilizce içerik sayfaları -> yeni Türkçe karşılıkları (GSC 404'leri)
-  RewriteRule ^about-us/?$             /hakkimizda/  [L,R=301]
-  RewriteRule ^about/?$                /hakkimizda/  [L,R=301]
-  RewriteRule ^contact/?$              /iletisim/    [L,R=301]
-  RewriteRule ^services/?$             /hizmetler/   [L,R=301]
+  # -------------------------------------------------------------------------
+  # 4) WordPress kalıntıları -> 410 Gone
+  #    Gerçek eşdeğeri YOK. Anasayfaya 301 "soft-404" sayılır; kalıcı silinmiş
+  #    içerik için 410 doğru sinyal, Google indeksten daha hızlı düşürür.
+  # -------------------------------------------------------------------------
+  RewriteRule ^(feed|comments/feed)/?$                         - [G,L,NC]
+  RewriteRule ^(hello-world|sample-page)/?$                    - [G,L,NC]
+  RewriteRule ^(category|tag|author)(/.*)?$                    - [G,L,NC]
+  RewriteRule ^(wp-login|wp-signup|wp-cron|wp-trackback|xmlrpc)\.php$ - [G,L,NC]
+  RewriteRule ^wp-[^/]*\.php$                                  - [G,L,NC]
+  RewriteRule ^wp-(admin|includes|json)(/.*)?$                 - [G,L,NC]
+  RewriteRule ^wp-content/(?!uploads/).*                       - [G,L,NC]
+  # Eski WP sorgu-tabanlı permalink'ler (?p=, ?page_id=, ?feed= ...) -> 410
+  RewriteCond %{QUERY_STRING} (^|&)(p|page_id|feed|cat|attachment_id)=  [NC]
+  RewriteRule ^(index\.php)?$                                  - [G,L]
 
-  # 4b) WordPress altyapı/arşiv yolları -> en yakın kanonik sayfa
-  RewriteRule ^feed/?$                 /       [L,R=301]
-  RewriteRule ^comments/feed/?$        /       [L,R=301]
-  RewriteRule ^(.+)/feed/?$            /$1/    [L,R=301]
-  RewriteRule ^hello-world/?$          /blog/  [L,R=301]
-  RewriteRule ^sample-page/?$          /       [L,R=301]
-  RewriteRule ^category(/.*)?$         /blog/  [L,R=301]
-  RewriteRule ^tag(/.*)?$              /blog/  [L,R=301]
-  RewriteRule ^author(/.*)?$           /kurumsal/ [L,R=301]
-  RewriteRule ^wp-admin(/.*)?$         /       [L,R=301]
-  RewriteRule ^wp-content(/.*)?$       /       [L,R=301]
-  RewriteRule ^wp-includes(/.*)?$      /       [L,R=301]
-  RewriteRule ^wp-[^/]*\.php$          /       [L,R=301]
-  RewriteRule ^xmlrpc\.php$            /       [L,R=301]
+  # -------------------------------------------------------------------------
+  # 5) Sayfa-benzeri yol (uzantısız; dosya/dizin değil) sonda '/' yoksa ekle.
+  #    Gerçek dizinleri mod_dir (DirectorySlash) zaten 301'ler; burada sadece
+  #    dizin olmayan yollar için eğik çizgi tutarlılığı sağlanır.
+  # -------------------------------------------------------------------------
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} !\.[a-zA-Z0-9]{2,5}$
+  RewriteCond %{REQUEST_URI} !/$
+  RewriteRule ^(.+)$ https://www.wolfse.net/$1/ [R=301,L,NE]
 </IfModule>
 
-# ---- 404 ----
+# ---- Hata sayfaları ----
 ErrorDocument 404 /404.html
+# 410 için Apache'nin varsayılan "Gone" yanıtı yeterlidir (noindex sinyali net).
 
 # ---- MIME türleri ----
 <IfModule mod_mime.c>
